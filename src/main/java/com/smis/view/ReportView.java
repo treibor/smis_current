@@ -78,8 +78,8 @@ public class ReportView extends VerticalLayout {
 		this.service = service;
 		initializeMlaItems();
 		initializeMpItems();
-		reportTypemla.setItems("General Report", "Detailed Report");
-		reportTypemp.setItems("General Report", "Detailed Report");
+		reportTypemla.setItems("General Report", "Detailed Report","Detailed Report-Legal");
+		//reportTypemp.setItems("General Report", "Detailed Report");
 		// candi.addValueChangeListener(e-> removePdfViewer());
 		
 		add(createFinalPanel(), hl4);
@@ -251,11 +251,16 @@ public class ReportView extends VerticalLayout {
 				String absolutePath = file.getAbsolutePath();
 				String reportPath = absolutePath.substring(0, absolutePath.length() - 15);
 				//System.out.println("A");
-				if (reportTypemla.getValue() == "Detailed Report") {
+				if (reportTypemla.getValue() == "Detailed Report" ||reportTypemla.getValue() == "Detailed Report-Legal" ) {
 					//System.out.println("Z");
 					List<Installment> installment = service.getInstallmentForReport(scheme.getValue(), year.getValue(),
 							consti.getValue(), block.getValue());
-					Resource resource = new ClassPathResource("report/Detailsmla.jrxml");
+					Resource resource=null;
+					if(reportTypemla.getValue() == "Detailed Report") {
+						resource = new ClassPathResource("report/Detailsmla.jrxml");
+					}else {
+						resource = new ClassPathResource("report/DetailsmlaLegal.jrxml");
+					}
 					InputStream employeeReportStream = resource.getInputStream();
 					JasperReport jasperReport = JasperCompileManager.compileReport(employeeReportStream);
 					JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(installment);

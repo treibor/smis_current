@@ -24,6 +24,9 @@ public interface WorkRepository extends JpaRepository<Work, Long> {
 	@Query("select coalesce (Max(c.workCode),0) from Work c where c.district= :district")
 	Long findMaxWorkCode(@Param ("district") District district);
 	
+	@Query("SELECT w FROM Work w LEFT JOIN FETCH w.installments ORDER BY w.workCode DESC")
+	List<Work> findAllWithInstallments();
+	
 	@Query("SELECT w.workName FROM Work w")
     List<String> findWorkNames();
 	

@@ -38,35 +38,15 @@ public class Installment implements Serializable {
 	private LocalDate ucDate;
 	private String enteredBy;
 	private LocalDate enteredOn;
-	public String getEnteredBy() {
-		return enteredBy;
-	}
-	public void setEnteredBy(String enteredBy) {
-		this.enteredBy = enteredBy;
-	}
-	public LocalDate getEnteredOn() {
-		return enteredOn;
-	}
-	public void setEnteredOn(LocalDate enteredOn) {
-		this.enteredOn = enteredOn;
-	}
-
-
 	@Column(length=2000)
 	private String copyTo;
-	public String getCopyTo() {
-		return copyTo;
-	}
-	public void setCopyTo(String copyTo) {
-		this.copyTo = copyTo;
-	}
-
-
 	@ManyToOne 
 	@JoinColumn(name="workId", referencedColumnName = "workId")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@NotNull
 	private Work work;
+	
+	
 	public long getInstallmentId() {
 		return installmentId;
 	}
@@ -132,6 +112,27 @@ public class Installment implements Serializable {
 
 	
 	
+	public String getEnteredBy() {
+		return enteredBy;
+	}
+	public void setEnteredBy(String enteredBy) {
+		this.enteredBy = enteredBy;
+	}
+	public LocalDate getEnteredOn() {
+		return enteredOn;
+	}
+	public void setEnteredOn(LocalDate enteredOn) {
+		this.enteredOn = enteredOn;
+	}
+	public String getCopyTo() {
+		return copyTo;
+	}
+	public void setCopyTo(String copyTo) {
+		this.copyTo = copyTo;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Work getWork() {
 		return work;
 	}

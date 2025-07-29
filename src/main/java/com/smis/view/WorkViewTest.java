@@ -24,30 +24,34 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
-import com.vaadin.flow.component.grid.editor.Editor;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.treegrid.TreeGrid;
+import com.vaadin.flow.data.provider.hierarchy.TreeData;
+import com.vaadin.flow.data.provider.hierarchy.TreeDataProvider;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.security.RolesAllowed;
 import software.xdev.vaadin.grid_exporter.GridExporter;
 
 @PageTitle("MLA Schemes")
-@Route(value = "mlaschemes", layout = MainLayout.class)
+@Route(value = "mlaschemes2", layout = MainLayout.class)
 @RolesAllowed({ "USER", "SUPER", "ADMIN" })
 //@CssImport(value = "../components/vaadin-grid.css", themeFor = "vaadin-grid")
-public class WorkView extends VerticalLayout {
+public class WorkViewTest extends VerticalLayout {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	Dbservice service;
 	Grid<Work> grid = new Grid<>(Work.class);
+	TreeGrid<Object> treeGrid = new TreeGrid<>();
 	TextField filterText = new TextField();
 	ComboBox<Block> block = new ComboBox<Block>();
 	ComboBox<Constituency> consti = new ComboBox<Constituency>();
@@ -60,7 +64,7 @@ public class WorkView extends VerticalLayout {
 	boolean isUser;
 	@Autowired
 	private Audit audit;
-	public WorkView(Dbservice service) {
+	public WorkViewTest(Dbservice service) {
 		this.service = service;
 		setSizeFull();
 		isAdmin = service.isAdmin();
@@ -68,11 +72,64 @@ public class WorkView extends VerticalLayout {
 		// displayFilter.addValueChangeListener(e-> displayFilters());
 		configureGrid();
 		configureForm();
-		add(getToolbar(), getContent());
+		//add(getToolbar(), getContent());
+		add(getToolbar(),treeGrid);
+		treeGrid();
 		updateGrid();
 		closeEditor();
 
 	}
+	
+	public void treeGrid() {
+		List<Work> works = service.getAllWorksAndInstallments();
+
+	    TreeData<Object> treeData = new TreeData<>();
+
+	    for (Work work : works) {
+	        treeData.addItem(null, work); // parent is null
+	        for (Installment installment : work.getInstallments()) {
+	            treeData.addItem(work, installment); // child under parent
+	        }
+	    }
+
+	    TreeDataProvider<Object> treeDataProvider = new TreeDataProvider<>(treeData);
+	    treeGrid.setDataProvider(treeDataProvider);
+
+	    treeGrid.addHierarchyColumn(obj -> {
+	        if (obj instanceof Work w) return "📁 " + w.getWorkName();
+	        if (obj instanceof Installment i) return "💰 Installment #" + i.getInstallmentNo();
+	        return "";
+	    }).setHeader("Name");
+
+	    // 🔹 Work Code / Installment No
+	    treeGrid.addColumn(obj -> {
+	        if (obj instanceof Work w) return w.getWorkCode();
+	        if (obj instanceof Installment i) return i.getInstallmentNo();
+	        return "";
+	    }).setHeader("Code / No");
+
+	    // 🔹 Sanction No / Installment Letter
+	    treeGrid.addColumn(obj -> {
+	        if (obj instanceof Work w) return w.getSanctionNo();
+	        if (obj instanceof Installment i) return i.getInstallmentLetter();
+	        return "";
+	    }).setHeader("Sanction / Letter");
+
+	    // 🔹 Amount
+	    treeGrid.addColumn(obj -> {
+	        if (obj instanceof Work w) return w.getWorkAmount();
+	        if (obj instanceof Installment i) return i.getInstallmentAmount();
+	        return "";
+	    }).setHeader("Amount");
+
+	    // 🔹 Date
+	    treeGrid.addColumn(obj -> {
+	        if (obj instanceof Work w) return w.getSanctionDate();
+	        if (obj instanceof Installment i) return i.getInstallmentDate();
+	        return "";
+	    }).setHeader("Date");
+	}
+	
 	private void configureCombos() {
 		block.setItems(service.getAllBlocks());
 		// block.setClearButtonVisible(true);
@@ -200,9 +257,7 @@ public class WorkView extends VerticalLayout {
 		dialog.getFooter().add(closeButton);
 		dialog.open();
 	}
-	
-	//test
-	
+
 	public void filterGrid() {
 		
 		// selected
@@ -232,7 +287,7 @@ public class WorkView extends VerticalLayout {
 		filterText.setValueChangeMode(ValueChangeMode.LAZY);
 		filterText.addValueChangeListener(e -> updateList());
 		filterText.setWidth("10%");
-		expButton.addClickListener(e -> GridExporter.newWithDefaults(grid).open());
+		expButton.addClickListener(e -> GridExporter.newWithDefaults(treeGrid).open());
 		expButton.setIcon(new Icon(VaadinIcon.EXTERNAL_LINK));
 		Button addButton = new Button("New Work");
 		addButton.setIcon(new Icon(VaadinIcon.PLUS_CIRCLE_O));

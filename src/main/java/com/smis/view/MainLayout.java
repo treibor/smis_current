@@ -127,7 +127,7 @@ public class MainLayout extends AppLayout  {
 				LineAwesomeIcon.CALENDAR.create());
 		SideNavItemWithHelperText users = new SideNavItemWithHelperText("", "Users", UsersView.class,
 				LineAwesomeIcon.USER.create());
-		SideNavItemWithHelperText newWorks = new SideNavItemWithHelperText("", "New Works", WorkViewNew.class,
+		SideNavItemWithHelperText newWorks = new SideNavItemWithHelperText("", "New Works", WorkViewTest.class,
 				LineAwesomeIcon.PEOPLE_CARRY_SOLID.create());
 		master.setVisible(isAdmin);
 		distmaster.setVisible(isSuper);

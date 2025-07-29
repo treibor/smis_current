@@ -69,22 +69,34 @@ public class Work implements Serializable{
 	@JoinColumn(name="constituencyId")
 	@NotNull(message = "Please select the constituency")
 	private Constituency constituency;
+	@ManyToOne
+	@JoinColumn(name="districtId")
+	@NotNull
+	private District district;
+	@OneToMany(mappedBy = "work", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Installment> installments;
+	
+	public List<Installment> getInstallments() {
+		return installments;
+	}
+	public void setInstallments(List<Installment> installments) {
+		this.installments = installments;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	private String enteredBy;
+	private LocalDate enteredOn;
+	
+	
+	
+	
 	public Village getVillage() {
 		return village;
 	}
 	public void setVillage(Village village) {
 		this.village = village;
 	}
-	@ManyToOne
-	@JoinColumn(name="districtId")
-	@NotNull
-	private District district;
-	
-	
-	private String enteredBy;
-	private LocalDate enteredOn;
-	
-	
 	
 	
 	public long getWorkId() {

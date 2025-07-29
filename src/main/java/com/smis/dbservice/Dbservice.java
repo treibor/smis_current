@@ -251,7 +251,13 @@ public class Dbservice implements Serializable{
 	}
 
 	// Works Queries
-	
+	public List<Work> getAllWorksAndInstallments() {
+		try {
+			return wrepo.findAllWithInstallments();
+		} catch (Exception e) {
+			return Collections.emptyList();
+		}
+	}
 	
 	public List<Work> getFilteredWorks(String searchTerm) {
 		try {

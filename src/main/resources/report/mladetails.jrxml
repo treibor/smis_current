@@ -118,9 +118,8 @@
 		<property name="com.jaspersoft.studio.field.label" value="district_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="district"/>
 	</field>
-	<variable name="Serial_By_Group" class="java.lang.Integer" resetType="Group" resetGroup="Group4" calculation="Count"/>
-	<variable name="Work_Serial" class="java.lang.Integer" incrementType="Group" incrementGroup="Group4" calculation="System">
-		<variableExpression><![CDATA[$V{Work_Serial}]]></variableExpression>
+	<variable name="Work_Serial" class="java.lang.Integer" incrementType="Group" incrementGroup="Group4" calculation="Count">
+		<variableExpression><![CDATA[$V{Group4_COUNT}]]></variableExpression>
 		<initialValueExpression><![CDATA[1]]></initialValueExpression>
 	</variable>
 	<variable name="Total_Amount" class="java.math.BigDecimal" calculation="Sum">
@@ -128,70 +127,15 @@
 	</variable>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{work.constituency.constituencyName}]]></groupExpression>
-		<groupHeader>
-			<band height="19">
-				<frame>
-					<reportElement mode="Opaque" x="0" y="3" width="400" height="14" forecolor="#B89F7D" backcolor="#8C8382" uuid="f24569ed-2518-465a-a480-0c195aacd180"/>
-					<textField textAdjust="StretchHeight">
-						<reportElement style="SubTitle" x="2" y="0" width="398" height="15" forecolor="#FFFFFF" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66">
-							<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						</reportElement>
-						<textElement>
-							<font fontName="Times New Roman" size="10" isBold="false"/>
-						</textElement>
-						<textFieldExpression><![CDATA["Constituency : "+$F{work.constituency.constituencyName}]]></textFieldExpression>
-					</textField>
-				</frame>
-			</band>
-		</groupHeader>
 	</group>
 	<group name="Group2">
 		<groupExpression><![CDATA[$F{work.block.blockName}]]></groupExpression>
-		<groupHeader>
-			<band height="13">
-				<textField>
-					<reportElement positionType="Float" x="6" y="0" width="792" height="12" forecolor="#000000" uuid="c09ae599-41a3-4b19-8a1e-72af405a3627">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement>
-						<font fontName="Times New Roman" size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Block/MB : "+$F{work.block.blockName}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
 	</group>
 	<group name="Group3">
 		<groupExpression><![CDATA[$F{work.scheme.schemeName}]]></groupExpression>
-		<groupHeader>
-			<band height="14">
-				<textField>
-					<reportElement positionType="Float" x="12" y="0" width="784" height="12" forecolor="#000000" uuid="8ad03e2f-87aa-49a9-a1a9-7bcd0f6b60d0">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement>
-						<font fontName="Times New Roman" size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Scheme : "+$F{work.scheme.schemeName}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
 	</group>
 	<group name="Group5">
 		<groupExpression><![CDATA[$F{work.year.yearName}]]></groupExpression>
-		<groupHeader>
-			<band height="13">
-				<textField>
-					<reportElement positionType="Float" x="20" y="0" width="776" height="12" forecolor="#000000" uuid="4060778f-14bf-44e5-b6e4-14155ff0265c">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement>
-						<font fontName="Times New Roman" size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Year: "+$F{work.year.yearName}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
 	</group>
 	<group name="Group4">
 		<groupExpression><![CDATA[$F{work.workCode}]]></groupExpression>
@@ -202,13 +146,13 @@
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textField textAdjust="StretchHeight">
-						<reportElement style="SubTitle" stretchType="ElementGroupHeight" x="-1" y="0" width="764" height="15" forecolor="#080101" uuid="269cf67f-f407-4abf-b8ac-4bb29965f3f2">
+						<reportElement style="SubTitle" stretchType="ElementGroupHeight" x="-1" y="0" width="681" height="15" forecolor="#080101" uuid="269cf67f-f407-4abf-b8ac-4bb29965f3f2">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement>
 							<font fontName="Times New Roman" size="10" isBold="false"/>
 						</textElement>
-						<textFieldExpression><![CDATA["Work: "+$F{work.workCode}+"-"+$F{work.workName}]]></textFieldExpression>
+						<textFieldExpression><![CDATA["Work: "+$F{work.workCode}+"-"+$F{work.workName}+"serialnumber"+$V{Work_Serial}]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="ScaleFont">
 						<reportElement style="SubTitle" x="40" y="15" width="726" height="15" forecolor="#080101" uuid="fc0889e3-b806-4c7f-974d-8d7ab1c0df81">
@@ -228,6 +172,16 @@
 							<font fontName="Times New Roman" size="10"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$V{Work_Serial}]]></textFieldExpression>
+					</textField>
+					<textField textAdjust="StretchHeight">
+						<reportElement style="Detail" positionType="Float" x="680" y="0" width="70" height="14" uuid="c0d91046-16df-443e-9935-8ed713ed10ac">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58b91665-ced9-484e-8692-90d95d15fdcc"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="Times New Roman" size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{installmentNo}]]></textFieldExpression>
 					</textField>
 				</frame>
 			</band>
@@ -410,6 +364,16 @@
 						<font fontName="Times New Roman" size="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ucLetter}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="118" y="0" width="70" height="14" uuid="01c6541d-91d1-4a5c-9c7e-aa097032b294">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58b91665-ced9-484e-8692-90d95d15fdcc"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Times New Roman" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{installmentNo}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
