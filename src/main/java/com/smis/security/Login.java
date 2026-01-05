@@ -121,7 +121,8 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		button.setAutofocus(true);
 		anchor.setText("Forgot Password?");
-		// anchor.getElement().addEventListener("click",e-> ForgotPassword());
+		anchor.getStyle().set("cursor", "pointer");
+		anchor.getElement().addEventListener("click",e-> ForgotPassword());
 		usernameField.getElement().setAttribute("autocomplete", "off");
 		passwordField.getElement().setAttribute("autocomplete", "off");
 
@@ -230,20 +231,7 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		sr.registerNewSession(session.getId(), userDetails);
 	}
 
-	public int getActiveSessionCountForUser(String username) {
-		int count = 0;
-		List<Object> principals = sr.getAllPrincipals();
-		for (Object principal : principals) {
-			if (principal instanceof UserDetails) {
-				UserDetails userDetails = (UserDetails) principal;
-				if (userDetails.getUsername().equals(username)) {
-					List<SessionInformation> sessionInfoList = sr.getAllSessions(userDetails, true);
-					count += sessionInfoList.size();
-				}
-			}
-		}
-		return count;
-	}
+	
 
 	public void ForgotPassword() {
 		Dialog aboutdialog = new Dialog();
@@ -275,7 +263,6 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		// Get active session count for the user
 		int activeSessionCount = getActiveSessionCountForUser(username);
 
-		// If there are active sessions for the user, invalidate them
 		if (activeSessionCount > 0) {
 			List<Object> principals = sr.getAllPrincipals();
 			for (Object principal : principals) {
@@ -294,7 +281,20 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 			}
 		}
 	}
-
+	public int getActiveSessionCountForUser(String username) {
+		int count = 0;
+		List<Object> principals = sr.getAllPrincipals();
+		for (Object principal : principals) {
+			if (principal instanceof UserDetails) {
+				UserDetails userDetails = (UserDetails) principal;
+				if (userDetails.getUsername().equals(username)) {
+					List<SessionInformation> sessionInfoList = sr.getAllSessions(userDetails, true);
+					count += sessionInfoList.size();
+				}
+			}
+		}
+		return count;
+	}
 	private void clearFields() {
 		regenerateCaptcha();
 		button.setEnabled(true);

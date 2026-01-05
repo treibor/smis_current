@@ -3,6 +3,8 @@ package com.smis.repository;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,13 +13,14 @@ import com.smis.entity.Block;
 import com.smis.entity.Constituency;
 import com.smis.entity.District;
 import com.smis.entity.Scheme;
-import com.smis.entity.Users;
 import com.smis.entity.Work;
 import com.smis.entity.Year;
 
 
 public interface WorkRepository extends JpaRepository<Work, Long> {
 	
+	Page<Work> findByDistrict(District district, Pageable pageable);//use only on postgres 14+
+	long countByDistrict(District district);
 	List<Work> findByDistrictOrderByWorkCodeDesc(District district);
 	List<Work> findByConstituency(Constituency constituency);	
 	List<Work> findByScheme(Scheme scheme);	

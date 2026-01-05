@@ -6,8 +6,11 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -17,10 +20,10 @@ import com.smis.entity.Constituency;
 import com.smis.entity.District;
 import com.smis.entity.Impldistrict;
 import com.smis.entity.Installment;
+import com.smis.entity.MasterProcess;
 import com.smis.entity.ProcessFlow;
 import com.smis.entity.ProcessUser;
 import com.smis.entity.Scheme;
-import com.smis.entity.MasterProcess;
 import com.smis.entity.State;
 import com.smis.entity.Users;
 import com.smis.entity.UsersRoles;
@@ -32,10 +35,10 @@ import com.smis.repository.ConstituencyRepository;
 import com.smis.repository.DistrictRepository;
 import com.smis.repository.ImpldistrictRepository;
 import com.smis.repository.InstallmentRepository;
+import com.smis.repository.MasterProcessRepository;
 import com.smis.repository.ProcessFlowRepo;
 import com.smis.repository.ProcessUserRepository;
 import com.smis.repository.RoleRepository;
-import com.smis.repository.MasterProcessRepository;
 import com.smis.repository.SchemeRepository;
 import com.smis.repository.StateRepository;
 import com.smis.repository.UserRepository;
@@ -481,6 +484,15 @@ public class Dbservice implements Serializable{
 			return wrepo.findByDistrictOrderByWorkCodeDesc(getDistrict());
 		}
 	}
+	public Stream<Work> fetch(int offset, int limit, Sort sort) {
+        int page = offset / limit;
+        PageRequest pageable = PageRequest.of(page, limit, Sort.by(Sort.Direction.DESC, "workCode"));
+        return wrepo.findByDistrict(getDistrict(), pageable).stream();
+    }
+
+    public int count() {
+        return Math.toIntExact(wrepo.countByDistrict(getDistrict()));
+    }
 
 	public List<Year> getAllYears() {
 		if (isSuperAdmin()) {

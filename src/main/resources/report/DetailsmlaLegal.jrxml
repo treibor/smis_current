@@ -126,14 +126,11 @@
 	<variable name="Total_Amount" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{work.workAmount}]]></variableExpression>
 	</variable>
-	<variable name="Serial_By_Group" class="java.lang.Integer" resetType="Group" resetGroup="Group4" incrementType="Group" incrementGroup="Group4">
-		<variableExpression><![CDATA[1]]></variableExpression>
-	</variable>
-	<variable name="Group4_Serial" class="java.lang.Integer" incrementType="Group" incrementGroup="Group4">
-		<variableExpression><![CDATA[$V{Serial_By_Group} + 1]]></variableExpression>
-	</variable>
 	<variable name="Total Released Amount" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{installmentAmount}]]></variableExpression>
+	</variable>
+	<variable name="GroupSerial" class="java.lang.Integer" incrementType="Group" incrementGroup="Group4" calculation="Sum">
+		<variableExpression><![CDATA[1]]></variableExpression>
 	</variable>
 	<group name="Group4">
 		<groupExpression><![CDATA[$F{work.workCode}]]></groupExpression>
@@ -160,7 +157,7 @@
 						<textElement textAlignment="Center">
 							<font fontName="Arial" size="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$V{GroupSerial}]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 						<reportElement style="Detail" positionType="Float" x="598" y="0" width="61" height="15" uuid="2f15c03c-9c34-47c0-afb0-53c1fdcb6345">
@@ -175,7 +172,7 @@
 						<textElement textAlignment="Center">
 							<font fontName="Arial" size="10"/>
 						</textElement>
-						<textFieldExpression><![CDATA[ $F{work.sanctionDate} == null ? "" : $F{work.sanctionDate}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{work.sanctionDate} == null ? "" : $F{work.sanctionDate}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 					</textField>
 					<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 						<reportElement style="Detail" positionType="Float" x="921" y="0" width="66" height="15" uuid="631c9817-da75-4683-8b2b-247be31e1a2f">
@@ -270,9 +267,21 @@
 				</frame>
 			</band>
 		</groupHeader>
+		<groupFooter>
+			<band height="9">
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="986" height="3" uuid="982c5cc3-f41c-4f04-ac05-c77c25613148">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
 	</group>
 	<group name="Group1">
-		<groupExpression><![CDATA[$F{work.workCode}]]></groupExpression>
+		<groupExpression><![CDATA[$F{installmentNo}]]></groupExpression>
 		<groupHeader>
 			<band height="20">
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -349,6 +358,18 @@
 				</frame>
 			</band>
 		</groupHeader>
+		<groupFooter>
+			<band height="5">
+				<line>
+					<reportElement x="488" y="1" width="500" height="3" uuid="8da7e9b2-5d51-4716-bc29-eed869518439">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
 	</group>
 	<title>
 		<band height="47" splitType="Stretch">
@@ -558,7 +579,7 @@
 					<textElement textAlignment="Center">
 						<font fontName="Arial" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[ $F{installmentDate} == null ? "" : $F{installmentDate}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{installmentDate} == null ? "" : $F{installmentDate}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="778" y="0" width="71" height="14" uuid="8e6b75bb-8f51-4061-be77-f38720f4c0cb">
@@ -611,14 +632,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ucDate} == null ? "" : $F{ucDate}.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
 				</textField>
-				<line>
-					<reportElement positionType="FixRelativeToBottom" x="486" y="15" width="500" height="3" uuid="8da7e9b2-5d51-4716-bc29-eed869518439">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<graphicElement>
-						<pen lineWidth="0.5" lineColor="#999999"/>
-					</graphicElement>
-				</line>
 			</frame>
 		</band>
 	</detail>

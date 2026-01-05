@@ -24,7 +24,8 @@ public class ValidationUtil {
     }
     public static void applyTextAreaValidation(TextArea textArea) {
     	//textArea.setAllowedCharPattern("[0-9A-Za-z.,()@/-'& ]");
-    	textArea.setAllowedCharPattern("[0-9A-Za-z.()@/'&\\s-]");
+    	//textArea.setAllowedCharPattern("[0-9A-Za-z.()@/'&\\s-]");
+    	textArea.setAllowedCharPattern("[^<>]");
     	textArea.setMinLength(0);
     	textArea.setMaxLength(50);
     }

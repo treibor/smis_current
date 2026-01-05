@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 
 import com.smis.audit.Audit;
 //import com.identity.views.CheckBox;
@@ -24,12 +25,14 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
-import com.vaadin.flow.component.grid.editor.Editor;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.provider.QuerySortOrder;
+import com.vaadin.flow.data.provider.SortDirection;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -46,6 +49,7 @@ public class WorkView extends VerticalLayout {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private DataProvider<Work, Void> workDp;
 	Dbservice service;
 	Grid<Work> grid = new Grid<>(Work.class);
 	TextField filterText = new TextField();
@@ -105,10 +109,6 @@ public class WorkView extends VerticalLayout {
 	private void configureGrid() {
 		
 		grid.setSizeFull();
-		// grid.setClassNameGenerator(work -> work.getWorkAmount().intValue() > 500 ?
-		// "warn" : null);
-		// grid.getColumns().forEach(col-> col.setAutoWidth(true));
-		
 		grid.setColumns("workCode");
 		grid.addColumn(work -> work.getWorkName()).setHeader("Name of The Work").setWidth("20%").setResizable(true)
 				.setSortable(true);
@@ -138,11 +138,6 @@ public class WorkView extends VerticalLayout {
 				.setAutoWidth(true);
 		grid.asSingleSelect().addValueChangeListener(e -> editWork(e.getValue()));
 		grid.getHeaderRows().clear();
-//		HeaderRow headerRow = grid.appendHeaderRow();
-//		headerRow.getCell(blockColumn).setComponent(block);
-//		headerRow.getCell(constiColumn).setComponent(consti);
-//		headerRow.getCell(schemeColumn).setComponent(scheme);
-//		headerRow.getCell(yearColumn).setComponent(year);
 		grid.addThemeVariants(GridVariant.LUMO_WRAP_CELL_CONTENT);
 		grid.setClassNameGenerator(work -> {
 			if (work.getWorkStatus().equals("Completed"))
@@ -219,11 +214,44 @@ public class WorkView extends VerticalLayout {
 		content.setSizeFull();
 		return content;
 	}
-
 	public void updateGrid() {
+		grid.setItems(
+				service.getFilteredWorks(scheme.getValue(), consti.getValue(), block.getValue(), year.getValue()));
+	}
+	public void updateGridx() {
 
-		grid.setItems(service.getAllWorks());
+		//grid.setItems(service.getAllWorks());
+		grid.setPageSize(50); // chunk size per server call
+
+	    workDp = DataProvider.fromCallbacks(
+	        query -> {
+	            // Map Vaadin sorts -> Spring Sort (fallback to workCode DESC)
+	            Sort sort = toSpringSort(query.getSortOrders(), Sort.by(Sort.Direction.DESC, "workCode"));
+	            return service.fetch(query.getOffset(), query.getLimit(), sort);
+	        },
+	        query -> service.count()
+	    );
+
+	    grid.setItems(workDp);
 		
+	}
+	private Sort toSpringSort(List<QuerySortOrder> orders, Sort defaultSort) {
+	    if (orders == null || orders.isEmpty()) return defaultSort;
+	    Sort sort = Sort.unsorted();
+	    for (QuerySortOrder o : orders) {
+	        // Map your grid column keys to entity fields
+	        String prop = switch (o.getSorted()) {
+	            case "workCode" -> "workCode";
+	            case "name"     -> "name";
+	            // add more mappings as needed
+	            default         -> "workCode";
+	        };
+	        Sort s = (o.getDirection() == SortDirection.ASCENDING)
+	                ? Sort.by(Sort.Direction.ASC, prop)
+	                : Sort.by(Sort.Direction.DESC, prop);
+	        sort = sort.and(s);
+	    }
+	    return sort.isUnsorted() ? defaultSort : sort;
 	}
 
 	private Component getToolbar() {
@@ -240,7 +268,7 @@ public class WorkView extends VerticalLayout {
 		// for testing purpose: generate dummy data
 		Button testButton = new Button("Generate Test Data");
 
-		testButton.addClickListener(e -> generateTestData());
+		//testButton.addClickListener(e -> generateTestData());
 		configureCombos();
 		//HorizontalLayout toolbar = new HorizontalLayout(filterText, addButton, testButton);
 		//HorizontalLayout toolbar = new HorizontalLayout(filterText,consti, block, scheme, year, addButton, expButton);
@@ -469,7 +497,7 @@ public class WorkView extends VerticalLayout {
 		} catch (ArithmeticException aE) {
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
 		}
 	}
 

@@ -52,18 +52,22 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Route(value = "printing", layout = MainLayout.class)
 @PermitAll
 public class ReportView extends VerticalLayout {
-	ComboBox<Block> block = new ComboBox("Block/MB");
-	ComboBox<Scheme> scheme = new ComboBox("Scheme");
-	ComboBox<Year> year = new ComboBox("Financial Year");
-	ComboBox<Constituency> consti = new ComboBox("Constituency");
-	ComboBox reportTypemla = new ComboBox("Select Report Type");
-	ComboBox reportTypemp = new ComboBox("Select Report Type");
-	ComboBox<Year> yearmp = new ComboBox("Year");
-	ComboBox<Constituencymp> constituencymp = new ComboBox("Constituency");
-	ComboBox<Impldistrict> implDistrict = new ComboBox("Implementing District");
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ComboBox<Block> block = new ComboBox<>("Block/MB");
+	ComboBox<Scheme> scheme = new ComboBox<>("Scheme");
+	ComboBox<Year> year = new ComboBox<>("Financial Year");
+	ComboBox<Constituency> consti = new ComboBox<>("Constituency");
+	ComboBox<String> reportTypemla = new ComboBox<>("Select Report Type");
+	ComboBox<String> reportTypemp = new ComboBox<>("Select Report Type");
+	ComboBox<Year> yearmp = new ComboBox<>("Year");
+	ComboBox<Constituencymp> constituencymp = new ComboBox<>("Constituency");
+	ComboBox<Impldistrict> implDistrict = new ComboBox<>("Implementing District");
 	DatePicker fromDate = new DatePicker("Print By Dates");
 	DatePicker toDate = new DatePicker();
-	Notification notify = new Notification();
+	//Notification Notification = new Notification();
 	private Dbservice service;
 	private DbserviceMp dbservice;
 	HorizontalLayout hl4 = new HorizontalLayout();
@@ -178,7 +182,7 @@ public class ReportView extends VerticalLayout {
 	private void printMpReport() {
 
 		if (reportTypemp.getValue() == null || reportTypemp.getValue() == "") {
-			notify.show("Please Select The Type of Report", 5000, Position.TOP_CENTER);
+			Notification.show("Please Select The Type of Report", 5000, Position.TOP_CENTER);
 		} else {
 			removePdfViewer();
 			try {
@@ -226,13 +230,13 @@ public class ReportView extends VerticalLayout {
 					hl4.add(pdfViewerrange);
 				} else {
 					
-					notify.show("Fatal Error: Contact Programmer ");
+					Notification.show("Fatal Error: Contact Programmer ");
 				}
 
 				// removePdfViewer();
 
 			} catch (Exception e) {
-				notify.show("Error:" + e, 5000, Position.TOP_CENTER);
+				Notification.show("Error:" + e, 5000, Position.TOP_CENTER);
 				
 			}
 		}
@@ -241,7 +245,7 @@ public class ReportView extends VerticalLayout {
 	private void printReport() {
 
 		if (reportTypemla.getValue() == null || reportTypemla.getValue() == "") {
-			notify.show("Please Select The Type of Report", 5000, Position.TOP_CENTER);
+			Notification.show("Please Select The Type of Report", 5000, Position.TOP_CENTER);
 		} else {
 			removePdfViewer();
 			try {
@@ -279,7 +283,7 @@ public class ReportView extends VerticalLayout {
 				} else if (reportTypemla.getValue() == "General Report") {
 					List<Work> works = service.getReportWorks(scheme.getValue(), consti.getValue(), block.getValue(),
 							year.getValue());
-					System.out.println("Works Total:"+works.size());
+					//System.out.println("Works Total:"+works.size());
 					Resource resource = new ClassPathResource("report/Generalmla.jrxml");
 					InputStream employeeReportStream = resource.getInputStream();
 					JasperReport jasperReport = JasperCompileManager.compileReport(employeeReportStream);
@@ -300,7 +304,7 @@ public class ReportView extends VerticalLayout {
 				// removePdfViewer();
 
 			} catch (Exception e) {
-				notify.show("Error:" + e, 5000, Position.TOP_CENTER);
+				Notification.show("Error:" + e, 5000, Position.TOP_CENTER);
 				
 			}
 		}
