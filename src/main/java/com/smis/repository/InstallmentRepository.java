@@ -33,5 +33,11 @@ public interface InstallmentRepository extends JpaRepository<Installment, Long>{
 	
 	@Query("select  count(*) from Installment c")
 	int getInstallmentCount();
-	
+	@Query("""
+		       select max(i.installmentNo)
+		       from Installment i
+		       where i.work = :work
+		         
+		       """)
+		Integer findMaxInstallmentNoByWork(@Param("work") Work work);
 }

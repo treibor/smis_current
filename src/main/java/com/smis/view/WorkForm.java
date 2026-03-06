@@ -237,7 +237,7 @@ public class WorkForm extends VerticalLayout {
 	}
 
 	private Component createInstallButtons() {
-		installsave.setEnabled(isUser);
+		//installsave.setEnabled(isUser);
 		// installsave.setWidthFull();
 		// installclose.setWidthFull();
 		installsave.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -265,7 +265,7 @@ public class WorkForm extends VerticalLayout {
 	}
 
 	private Component createUcButtons() {
-		ucsave.setEnabled(isUser);
+		//ucsave.setEnabled(isUser);
 		// ucsave.setWidthFull();
 		// ucclose.setWidthFull();
 		ucsave.addThemeVariants(ButtonVariant.LUMO_PRIMARY);

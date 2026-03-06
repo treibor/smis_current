@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -122,7 +123,6 @@ public class Dbservice implements Serializable{
 	}
 	
 	public boolean isUser() {
-	    //Users loggedUser = getLoggedUser(); // Retrieve the logged-in user
 	    
 	    return getRoles().stream()
 	            .anyMatch(role -> role.getRoleName().equalsIgnoreCase("Admin")
@@ -277,9 +277,23 @@ public class Dbservice implements Serializable{
 		}
 	}
 
-	public List<Work> getFilteredWorks(Scheme scheme, Constituency consti, Block block, Year year) {
+	public List<Work> getFilteredWorks(Scheme scheme, Constituency consti, Block block, Year year, String searchTerm) {
 		try {
-			return wrepo.getFilteredWorks(scheme, getDistrict(), year, consti, block);
+			 boolean noFilters =
+		                scheme == null &&
+		                consti == null &&
+		                block == null &&
+		                year == null &&
+		                (searchTerm == null || searchTerm.isBlank());
+
+			 if (noFilters) {
+				 	//System.out.println("No Filtere"+getDistrict().getDistrictName());
+		            return wrepo.getTop100Works(getDistrict().getDistrictId());
+		        }
+
+		        return wrepo.getFilteredWorks(
+		                scheme, getDistrict(), year, consti, block, searchTerm, Pageable.unpaged()
+		        );
 		} catch (Exception e) {
 
 			return Collections.emptyList();
@@ -625,5 +639,19 @@ public class Dbservice implements Serializable{
 	}
 	public void saveProcessFlow(ProcessFlow processflow) {
 		pflowrepo.save(processflow);
+	}
+	public void deleteInstallment(Installment inst) {
+		irepo.delete(inst);
+	}
+	public boolean isLargestInstallment(Installment inst) {
+	    if (inst == null || inst.getWork() == null) {
+	        return false;
+	    }
+	    Integer maxNo = irepo.findMaxInstallmentNoByWork(inst.getWork());
+
+	    if (maxNo == null) {
+	        return false;
+	    }
+	    return inst.getInstallmentNo() == maxNo;
 	}
 }

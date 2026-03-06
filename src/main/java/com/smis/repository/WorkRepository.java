@@ -46,17 +46,41 @@ public interface WorkRepository extends JpaRepository<Work, Long> {
 	List<Work> getFilteredWorkss(@Param("scheme") Scheme scheme, @Param("district") District district, @Param("year") Year year,@Param("consti") Constituency consti, @Param("block") Block block);
 	
 	
-	@Query("SELECT c FROM Work c WHERE c.district = :district " +
-		       "AND (:scheme IS NULL OR c.scheme = :scheme) " +
-		       "AND (:year IS NULL OR c.year = :year) " +
-		       "AND (:block IS NULL OR c.block = :block) " +
-		       "AND (:consti IS NULL OR c.constituency = :consti) " +
-		       "ORDER BY c.workCode DESC")
-		List<Work> getFilteredWorks(@Param("scheme") Scheme scheme, 
-		                            @Param("district") District district, 
-		                            @Param("year") Year year,
-		                            @Param("consti") Constituency consti, 
-		                            @Param("block") Block block);
+	@Query("""
+		    SELECT c
+		    FROM Work c
+		    WHERE c.district = :district
+		      AND (:scheme IS NULL OR c.scheme = :scheme)
+		      AND (:year   IS NULL OR c.year = :year)
+		      AND (:block  IS NULL OR c.block = :block)
+		      AND (:consti IS NULL OR c.constituency = :consti)
+
+		      AND (
+		            :searchTerm IS NULL OR :searchTerm = '' OR
+		            str(c.workCode) = :searchTerm OR
+		            lower(c.workName) LIKE lower(concat('%', :searchTerm, '%')) OR
+		            lower(c.sanctionNo) LIKE lower(concat('%', :searchTerm, '%'))
+		          )
+
+		    ORDER BY c.workCode DESC
+		""")
+		List<Work> getFilteredWorks(
+		        @Param("scheme") Scheme scheme,
+		        @Param("district") District district,
+		        @Param("year") Year year,
+		        @Param("consti") Constituency consti,
+		        @Param("block") Block block,
+		        @Param("searchTerm") String searchTerm,
+		        Pageable pageable
+		);
+	@Query(value = """
+		    SELECT *
+		    FROM work c
+		    WHERE c.district_id = :districtId
+		    ORDER BY c.work_code DESC
+		    LIMIT 100
+		""", nativeQuery = true)
+		List<Work> getTop100Works(@Param("districtId") Long districtId);
 	
 	@Query("select  c, d, e, f, g, h from Work c join c.constituency d join c.block e join c.scheme f join c.year g join c.district h where  c.district=:district and (c.scheme=:scheme or :scheme is null) and (c.year=:year or :year is null) and (c.block=:block or :block is null ) and (c.constituency=:consti or :consti is null ) order by d.constituencyName, e.blockName, f.schemeName, g.yearName, c.workCode Desc")
 	List<Work> getReportWorks(@Param("scheme") Scheme scheme, @Param("district") District district, @Param("year") Year year,@Param("consti") Constituency consti, @Param("block") Block block);

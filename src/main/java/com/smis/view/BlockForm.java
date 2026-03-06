@@ -42,7 +42,7 @@ public class BlockForm extends FormLayout{
 		blockDevelopmentOfficer.setHelperText("Eg: Block Development Officer");
 		blockLabel.setHelperText("Eg: Mawlai C&RD Block");
 		ValidationUtil.applyTextOnly(blockDevelopmentOfficer);
-		ValidationUtil.applyTextOnly(blockLabel);
+		ValidationUtil.applyValidation(blockLabel);
 		ValidationUtil.applyTextOnly(blockName);
 		add(blockName, blockDevelopmentOfficer, blockLabel, inUse, createButtonsLayout());
 	}

@@ -46,7 +46,7 @@ public class HomeView extends VerticalLayout {
     public HomeView(Dbservice service, DashboardService dservice) {
     	this.service=service;
     	this.dservice=dservice;
-    	add(getCharts2(), getCharts());
+    	add(getCards());
         setWidthFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
 		setDefaultHorizontalComponentAlignment(Alignment.CENTER);
@@ -123,7 +123,9 @@ public class HomeView extends VerticalLayout {
 		card.add(icon, titleLabel, descriptionLabel);
 
 		return card;
-	}public Component getCharts() {
+	}
+    
+    public Component getCharts() {
     	SOChart soChart = new SOChart();
     	SOChart soChart2 = new SOChart();
     	CategoryData labels = new CategoryData();

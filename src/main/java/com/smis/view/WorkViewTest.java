@@ -260,10 +260,7 @@ public class WorkViewTest extends VerticalLayout {
 
 	public void filterGrid() {
 		
-		// selected
-		// filterText.setValue("");
-		grid.setItems(
-				service.getFilteredWorks(scheme.getValue(), consti.getValue(), block.getValue(), year.getValue()));
+		
 	}
 
 	private Component getContent() {

@@ -1,6 +1,7 @@
 package com.smis.view;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -17,16 +18,21 @@ import com.smis.entity.Installment;
 import com.smis.entity.Scheme;
 import com.smis.entity.Work;
 import com.smis.entity.Year;
+
+import com.smis.view.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -49,6 +55,8 @@ public class WorkView extends VerticalLayout {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final DateTimeFormatter dateFormatter =
+	        DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private DataProvider<Work, Void> workDp;
 	Dbservice service;
 	Grid<Work> grid = new Grid<>(Work.class);
@@ -64,6 +72,7 @@ public class WorkView extends VerticalLayout {
 	boolean isUser;
 	@Autowired
 	private Audit audit;
+	Span workCount;
 	public WorkView(Dbservice service) {
 		this.service = service;
 		setSizeFull();
@@ -72,10 +81,17 @@ public class WorkView extends VerticalLayout {
 		// displayFilter.addValueChangeListener(e-> displayFilters());
 		configureGrid();
 		configureForm();
-		add(getToolbar(), getContent());
+		add(getToolbar(), getCountPanel(),getContent());
 		updateGrid();
 		closeEditor();
 
+	}
+	private Component getCountPanel(){
+		workCount = new Span();
+		workCount.getStyle().set("font-size", "var(--lumo-font-size-s)");
+		workCount.getStyle().set("color", "var(--lumo-secondary-text-color)");
+		workCount.getStyle().set("margin-left", "5px");
+		return workCount;
 	}
 	private void configureCombos() {
 		block.setItems(service.getAllBlocks());
@@ -100,10 +116,10 @@ public class WorkView extends VerticalLayout {
 		scheme.setWidthFull();
 		year.setWidthFull();
 		consti.setWidthFull();
-		block.addValueChangeListener(e -> filterGrid());
-		consti.addValueChangeListener(e -> filterGrid());
-		year.addValueChangeListener(e -> filterGrid());
-		scheme.addValueChangeListener(e -> filterGrid());
+		block.addValueChangeListener(e -> updateGrid());
+		consti.addValueChangeListener(e -> updateGrid());
+		year.addValueChangeListener(e -> updateGrid());
+		scheme.addValueChangeListener(e -> updateGrid());
 	}
 
 	private void configureGrid() {
@@ -120,7 +136,7 @@ public class WorkView extends VerticalLayout {
 		grid.addColumn(work -> work.getYear().getYearName()).setAutoWidth(true).setHeader("Year").setSortable(true).setResizable(true);
 		grid.addColumn(work -> work.getSanctionNo()).setHeader("Sanc. No").setResizable(true).setSortable(true)
 				.setAutoWidth(true);
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		//DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		grid.addColumn(work -> 
 			work.getSanctionDate()!=null? 
 					work.getSanctionDate().format(dateFormatter):"No Date").setHeader("Sanc. Date").setResizable(true).setSortable(true)
@@ -164,7 +180,7 @@ public class WorkView extends VerticalLayout {
 		Dialog dialog = new Dialog();
 		dialog.setHeaderTitle(work.getWorkCode()+"-"+work.getWorkName());
 		Grid<Installment> installmentGrid = new Grid<>(Installment.class, false);
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		//DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		installmentGrid.addColumn(Installment::getInstallmentNo).setHeader("Installment Number").setResizable(true);
 		installmentGrid.addColumn(Installment::getInstallmentAmount).setHeader("Amount Released").setResizable(true);
 		//installmentGrid.addColumn(Installment::getInstallmentDate).setHeader("Released Date").setResizable(true);
@@ -190,22 +206,135 @@ public class WorkView extends VerticalLayout {
 		List<Installment> installments = service.getInstallments(work);
 		installmentGrid.setItems(installments);
 		installmentGrid.setAllRowsVisible(true);
+		Button deleteButton = new Button("Delete");
+		Button editButton = new Button("Edit");
+		deleteButton.setEnabled(false); // default off
+		editButton.setEnabled(false);
+		// 1) Click listener ONCE
+		deleteButton.addClickListener(click -> {
+		    Installment selected = installmentGrid.asSingleSelect().getValue();
+		    if (selected == null) return;
+		    service.deleteInstallment(selected);
+		    Notification.show("Installment Deleted");
+		    //filterGrid();
+		    grid.asSingleSelect().clear();
+		    dialog.close();
+		});
+		editButton.addClickListener(click -> {
+		    Installment selected = installmentGrid.asSingleSelect().getValue();
+		    if (selected == null) return;
+		    editInstallment(selected);
+		    dialog.close();
+		});
+		// 2) Selection listener ONLY enables/disables
+		installmentGrid.asSingleSelect().addValueChangeListener(e -> {
+		    Installment selected = e.getValue();
+
+		    if (!isAdmin || selected == null) {
+		        deleteButton.setEnabled(false);
+		        editButton.setEnabled(false);
+		        return;
+		    }
+
+		    boolean isLargest = service.isLargestInstallment(selected);
+		    deleteButton.setEnabled(isLargest);
+		    editButton.setEnabled(isLargest);
+		});
 		Button closeButton = new Button("Close", e -> dialog.close());
 		dialog.add(installmentGrid);
-		dialog.getFooter().add(closeButton);
+		dialog.getFooter().add(editButton,deleteButton,closeButton);
 		dialog.open();
 	}
 	
-	//test
-	
-	public void filterGrid() {
-		
-		// selected
-		// filterText.setValue("");
-		grid.setItems(
-				service.getFilteredWorks(scheme.getValue(), consti.getValue(), block.getValue(), year.getValue()));
-	}
+	private void editInstallment(Installment inst) {
+	    Dialog d = new Dialog();
+	    d.setHeaderTitle("Edit Installment");
 
+	    TextField rletter = new TextField("Released Letter No");
+	    TextField ucletter = new TextField("UC Letter No");
+	    DatePicker rdate = new DatePicker("Released Date");
+	    DatePicker ucdate = new DatePicker("UC Date");
+	    rletter.setEnabled(false);
+	    ucletter.setEnabled(false);
+	    rdate.setEnabled(false);
+	    ucdate.setEnabled(false);
+	    String instLetter = inst.getInstallmentLetter();
+	    String ucLetter = inst.getUcLetter();
+	    LocalDate rDate = inst.getInstallmentDate();
+	    LocalDate ucDate = inst.getUcDate();
+
+	    if (instLetter != null && !instLetter.isBlank()) {
+	        rletter.setValue(instLetter);
+	        rletter.setEnabled(true);
+	    }
+
+	    if (ucLetter != null && !ucLetter.isBlank()) {
+	        ucletter.setValue(ucLetter);
+	        ucletter.setEnabled(true);
+	    }
+
+	    if (rDate != null) {
+	        rdate.setValue(rDate);
+	        rdate.setEnabled(true);
+	    }
+
+	    if (ucDate != null) {
+	        ucdate.setValue(ucDate);
+	        ucdate.setEnabled(true);
+	    }
+
+	    FormLayout form = new FormLayout();
+
+	    form.setResponsiveSteps(
+	            new FormLayout.ResponsiveStep("0", 1),
+	            new FormLayout.ResponsiveStep("500px", 2)
+	    );
+
+	    form.add(
+	            rletter, rdate,
+	            ucletter, ucdate
+	    );
+	    d.add(form);
+
+	    Button closeButton = new Button("Close", e -> d.close());
+
+	    Button saveButton = new Button("Save", e -> {
+	    	try {
+				LocalDate releasedDate = rdate.getValue();
+				LocalDate utilizationDate = ucdate.getValue();
+				LocalDate sanctionDate = inst.getWork().getSanctionDate();
+
+				if (releasedDate != null && releasedDate.isBefore(sanctionDate)) {
+				    Notification.show("Released Date cannot be before Sanction Date",
+				            3000, Notification.Position.MIDDLE);
+				    return;
+				}
+				if (releasedDate != null && utilizationDate != null && releasedDate.isAfter(utilizationDate)) {
+				    Notification.show("UC Date cannot be before Installment Release Date",
+				            3000, Notification.Position.MIDDLE);
+				    return;
+				}
+				String releasedLetter = rletter.getValue() != null ? rletter.getValue().trim() : null;
+				String ucLetterNo = ucletter.getValue() != null ? ucletter.getValue().trim() : null;
+
+				inst.setInstallmentLetter(releasedLetter == null || releasedLetter.isBlank() ? null : releasedLetter);
+				inst.setUcLetter(ucLetterNo == null || ucLetterNo.isBlank() ? null : ucLetter);
+
+				inst.setInstallmentDate(rdate.getValue());
+				inst.setUcDate(ucdate.getValue());
+
+				service.saveInstallment(inst);
+				Notification.show("Installment updated");
+				d.close();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    });
+
+	    d.getFooter().add(saveButton, closeButton);
+	    d.open();
+	}
 	private Component getContent() {
 		HorizontalLayout content = new HorizontalLayout(grid, workform);
 		content.setFlexGrow(1, grid);
@@ -214,51 +343,22 @@ public class WorkView extends VerticalLayout {
 		content.setSizeFull();
 		return content;
 	}
+
 	public void updateGrid() {
 		grid.setItems(
-				service.getFilteredWorks(scheme.getValue(), consti.getValue(), block.getValue(), year.getValue()));
-	}
-	public void updateGridx() {
-
-		//grid.setItems(service.getAllWorks());
-		grid.setPageSize(50); // chunk size per server call
-
-	    workDp = DataProvider.fromCallbacks(
-	        query -> {
-	            // Map Vaadin sorts -> Spring Sort (fallback to workCode DESC)
-	            Sort sort = toSpringSort(query.getSortOrders(), Sort.by(Sort.Direction.DESC, "workCode"));
-	            return service.fetch(query.getOffset(), query.getLimit(), sort);
-	        },
-	        query -> service.count()
-	    );
-
-	    grid.setItems(workDp);
-		
-	}
-	private Sort toSpringSort(List<QuerySortOrder> orders, Sort defaultSort) {
-	    if (orders == null || orders.isEmpty()) return defaultSort;
-	    Sort sort = Sort.unsorted();
-	    for (QuerySortOrder o : orders) {
-	        // Map your grid column keys to entity fields
-	        String prop = switch (o.getSorted()) {
-	            case "workCode" -> "workCode";
-	            case "name"     -> "name";
-	            // add more mappings as needed
-	            default         -> "workCode";
-	        };
-	        Sort s = (o.getDirection() == SortDirection.ASCENDING)
-	                ? Sort.by(Sort.Direction.ASC, prop)
-	                : Sort.by(Sort.Direction.DESC, prop);
-	        sort = sort.and(s);
-	    }
-	    return sort.isUnsorted() ? defaultSort : sort;
+				service.getFilteredWorks(scheme.getValue(), consti.getValue(), block.getValue(), year.getValue(), filterText.getValue()));
+		updateCount();
 	}
 
+	private void updateCount() {
+	    int count = grid.getListDataView().getItemCount();
+	    workCount.setText("Showing " + count + " works");
+	}
 	private Component getToolbar() {
 		filterText.setPlaceholder("Filter By Work Code, Name or Sanction Number");
 		filterText.setClearButtonVisible(true);
 		filterText.setValueChangeMode(ValueChangeMode.LAZY);
-		filterText.addValueChangeListener(e -> updateList());
+		filterText.addValueChangeListener(e -> updateGrid());
 		filterText.setWidth("10%");
 		expButton.addClickListener(e -> GridExporter.newWithDefaults(grid).open());
 		expButton.setIcon(new Icon(VaadinIcon.EXTERNAL_LINK));
@@ -350,7 +450,7 @@ public class WorkView extends VerticalLayout {
 		service.saveWork(event.getWork());
 		audit.saveAudit(event.getWork(), "Save/Update");
 		
-		updateList();
+		updateGrid();
 		long b = service.getWorkCode();
 		
 
@@ -385,20 +485,12 @@ public class WorkView extends VerticalLayout {
 		// service.deleteInstallments(event.getWork());
 		audit.saveAudit(event.getWork(), "Delete");
 		service.deleteWork(event.getWork());
-		updateList();
+		updateGrid();
 		closeEditor();
 
 	}
 
-	private void updateList() {
-		block.clear();
-		scheme.clear();
-		consti.clear();
-		year.clear();
-		///grid.setItems(service.getFilteredWorks(filterText.getValue()));
-		grid.setItems(service.getFilteredWorkss(filterText.getValue()));
-		// configureGrid();
-	}
+
 
 	private void closeEditor() {
 		workform.setWork(null);
@@ -426,7 +518,7 @@ public class WorkView extends VerticalLayout {
 				
 				workform.setWork(work);
 				workform.setVisible(true);
-				workform.save.setEnabled(isUser);
+				//workform.save.setEnabled(isUser);
 				enableFields();
 				workinstallment = work.getNoOfInstallments();
 				
@@ -458,7 +550,7 @@ public class WorkView extends VerticalLayout {
 							} else {
 								// Work is completed
 								closeAllAccordion();
-								workform.save.setEnabled(false);
+								//workform.save.setEnabled(false);
 							}
 						} else {
 							// Not All Installments are entered

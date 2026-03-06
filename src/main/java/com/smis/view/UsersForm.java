@@ -62,14 +62,14 @@ public class UsersForm extends FormLayout {
 		checkboxGroup.setItems("ADMIN", "USER");
 		//checkboxGroup.select("Order ID", "Customer");
 		checkboxGroup.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-		schemes.setItems(service.getAllSchemes());
-		schemes.setItemLabelGenerator(Scheme::getSchemeName);
-		schemes.addValueChangeListener(e->addProcessScheme(e.getValue()));
+		//schemes.setItems(service.getAllSchemes());
+		//schemes.setItemLabelGenerator(Scheme::getSchemeName);
+		//schemes.addValueChangeListener(e->addProcessScheme(e.getValue()));
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		save.addClickShortcut(Key.ENTER);
 		save.addClickListener(event-> validateandSave());
 		savetask.addClickListener(e->addTask());
-		return new VerticalLayout(enabled,checkboxGroup,save,  schemes, schemeprocess, savetask);
+		return new VerticalLayout(enabled,checkboxGroup,save);
 	}
 
 	private void addTask() {

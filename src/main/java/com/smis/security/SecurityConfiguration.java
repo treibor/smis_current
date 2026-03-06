@@ -1,6 +1,5 @@
 package com.smis.security;
 
-
 import java.io.IOException;
 import java.util.Arrays;
 

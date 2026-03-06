@@ -60,7 +60,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @PageTitle("MLA Release Order")
 @Route(value="releaseordermla", layout=MainLayout.class)
-@RolesAllowed({"USER","SUPER"})
+@RolesAllowed({"USER","SUPER","ADMIN"})
 public class PrintView extends HorizontalLayout{
 	//Binder <Work> binder=new BeanValidationBinder<>(Work.class);
 	Dbservice service;
