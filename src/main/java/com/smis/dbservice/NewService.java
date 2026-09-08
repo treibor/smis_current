@@ -219,16 +219,14 @@ public class NewService implements Serializable{
 		return irepo.getReportData(scheme, getDistrict(), year, consti, block);
 	}
 
-	public void saveInstallment(InstallmentNew install) {
-		try {
-			if (install == null) {
+	@Autowired
+	private com.smis.security.richtext.RichTextContentService richTextContent;
 
-				return;
-			}
-			irepo.save(install);
-		} catch (Exception e) {
-			Notification.show("Unable to Save Installment. Error:" + e, 5000, Position.TOP_CENTER);
-		}
+	@org.springframework.transaction.annotation.Transactional
+	public void saveInstallment(InstallmentNew install) {
+		if (install == null) return;
+		richTextContent.prepare(install);
+		irepo.save(install);
 	}
 
 	public void deleteInstallments(WorkNew work) {

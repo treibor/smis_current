@@ -39,6 +39,7 @@ public class Installment implements Serializable {
 	private String enteredBy;
 	private LocalDate enteredOn;
 	@Column(length=2000)
+	@jakarta.persistence.Convert(converter = com.smis.security.richtext.RichTextHtmlConverter.class)
 	private String copyTo;
 	@ManyToOne 
 	@JoinColumn(name="workId", referencedColumnName = "workId")

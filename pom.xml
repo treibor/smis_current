@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
-    <!-- Project from https://start.vaadin.com/project/a94b770e-7a86-433b-a796-49b22a1afaf0 -->
+    
     <groupId>com.application.smis</groupId>
     <artifactId>smis</artifactId>
     <name>smis</name>
     <version>2.0</version>
     <packaging>war</packaging>
 
-    <properties>
-        <java.version>17</java.version>
-        <vaadin.version>24.2.0</vaadin.version>
-    </properties>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <properties>
+        <java.version>17</java.version>
+        <vaadin.version>24.2.0</vaadin.version>
+    </properties>
 
     <repositories>
         <repository>
@@ -43,124 +46,119 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <!-- Replace artifactId with vaadin-core to use only free components -->
-            <artifactId>vaadin</artifactId>
-        </dependency>
+        <!-- Vaadin -->
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.parttio</groupId>
-            <artifactId>line-awesome</artifactId>
-            <version>1.1.0</version>
-        </dependency>
 
+        <!-- Spring Boot Starters -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-           <scope>provided</scope>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
-       
         <dependency>
-            <groupId>
-				org.postgresql</groupId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Database -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
-		</dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
 
+        <!-- Security & Utilities -->
         <dependency>
-            <groupId>
-				org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-	</dependency>
-	
-     
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>20260313.1</version>
+        </dependency>
         <dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>
-				spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-    <groupId>com.bucket4j</groupId>
-    <artifactId>bucket4j-core</artifactId>
-    <version>8.1.0</version>
-</dependency>
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>
-				org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>
-				provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>
-				org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>
-				test</scope>
-		</dependency>
-		
-		
-		<dependency>
-			<groupId>
-				com.storedobject.chart</groupId>
-			<artifactId>
-				so-charts</artifactId>
-			<version>3.2.4</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>
-				net.sf.jasperreports</groupId>
-			<artifactId>
-				jasperreports</artifactId>
-			<version>6.20.6</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports-fonts</artifactId>
-			<version>6.20.6</version>
-		</dependency>
-		<dependency>
-			<groupId>
-				com.mpobjects.jasperreports.font</groupId>
-			<artifactId>
-				jasperreports-fonts-liberation</artifactId>
-			<version>2.1.2</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>
-				com.xdev-software</groupId>
-			<artifactId>vaadin-grid-exporter</artifactId>
-			<version>
-				3.0.3</version>
-		</dependency>
-	<dependency>
-   <groupId>org.vaadin.addons.componentfactory</groupId>
-   <artifactId>vcf-pdf-viewer</artifactId>
-   <version>3.0.0</version>
-</dependency>
-<dependency>
-   <groupId>com.wontlost</groupId>
-   <artifactId>ckeditor-vaadin</artifactId>
-   <version>4.0.0</version>
-</dependency>
+            <groupId>com.bucket4j</groupId>
+            <artifactId>bucket4j-core</artifactId>
+            <version>8.1.0</version>
+        </dependency>
+
+        <!-- UI & Add-ons -->
+        <dependency>
+            <groupId>org.parttio</groupId>
+            <artifactId>line-awesome</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.storedobject.chart</groupId>
+            <artifactId>so-charts</artifactId>
+            <version>3.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xdev-software</groupId>
+            <artifactId>vaadin-grid-exporter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.addons.componentfactory</groupId>
+            <artifactId>vcf-pdf-viewer</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wontlost</groupId>
+            <artifactId>ckeditor-vaadin</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- JasperReports -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.6</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>6.20.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mpobjects.jasperreports.font</groupId>
+            <artifactId>jasperreports-fonts-liberation</artifactId>
+            <version>2.1.2</version>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -175,7 +173,6 @@
                     <maxAttempts>240</maxAttempts>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-maven-plugin</artifactId>
@@ -188,33 +185,16 @@
                     </execution>
                 </executions>
             </plugin>
-            
         </plugins>
     </build>
 
     <profiles>
+        <!-- Production mode activated using -Pproduction -->
         <profile>
-            <!-- Production mode is activated using -Pproduction -->
             <id>production</id>
             <properties>
-				<vaadin.productionMode>true</vaadin.productionMode>
-				<vaadin.disable-xsrf-protection>false</vaadin.disable-xsrf-protection>
-			</properties>
-			
-            <dependencies>
-                <!-- Exclude development dependencies from production -->
-                <dependency>
-                    <groupId>com.vaadin</groupId>
-                    <artifactId>vaadin-core</artifactId>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>com.vaadin</groupId>
-                            <artifactId>vaadin-dev</artifactId>
-                        </exclusion>
-                        
-                    </exclusions>
-                </dependency>
-            </dependencies>
+                <vaadin.productionMode>true</vaadin.productionMode>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -226,7 +206,7 @@
                                 <goals>
                                     <goal>build-frontend</goal>
                                 </goals>
-                                <phase>compile</phase>
+                                <phase>process-resources</phase>
                             </execution>
                         </executions>
                     </plugin>
@@ -243,50 +223,39 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>
-									start-spring-boot</id>
+                                <id>start-spring-boot</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
-                                    <goal>
-										start</goal>
-								</goals>
-							</execution>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
                             <execution>
-                                <id>
-									stop-spring-boot</id>
+                                <id>stop-spring-boot</id>
                                 <phase>post-integration-test</phase>
                                 <goals>
-                                    <goal>
-										stop</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				
-					<!-- Runs the integration tests (*IT) after the server is started -->
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
-                        <groupId>
-							org.apache.maven.plugins</groupId>
-                        <artifactId>
-							maven-failsafe-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
                         <executions>
                             <execution>
                                 <goals>
                                     <goal>integration-test</goal>
-                                    <goal>
-										verify</goal>
-								</goals>
-							</execution>
-						</executions>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                         <configuration>
-                            <trimStackTrace>
-								false</trimStackTrace>
+                            <trimStackTrace>false</trimStackTrace>
                             <enableAssertions>true</enableAssertions>
-						</configuration>
-					</plugin>
-				</plugins>
+                        </configuration>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
-
     </profiles>
 </project>

@@ -45,10 +45,8 @@ import com.vaadin.flow.data.selection.SelectionEvent;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
-import com.wontlost.ckeditor.Constants.EditorType;
-import com.wontlost.ckeditor.Constants.ThemeType;
-import com.wontlost.ckeditor.VaadinCKEditor;
-import com.wontlost.ckeditor.VaadinCKEditorBuilder;
+import com.smis.security.richtext.SafeRichTextEditor;
+import org.springframework.web.util.HtmlUtils;
 
 import jakarta.annotation.security.RolesAllowed;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -85,11 +83,7 @@ public class PrintView extends HorizontalLayout{
 	boolean isAdmin;
 	 VerticalLayout vlayout = new VerticalLayout();
 	 
-	VaadinCKEditor inlineEditor = new VaadinCKEditorBuilder().with(builder -> {
-		builder.editorData = "<p></p>";
-		builder.editorType = EditorType.INLINE;
-	   // builder.theme = ThemeType.DARK;
-	}).createVaadinCKEditor();
+	SafeRichTextEditor inlineEditor = new SafeRichTextEditor();
 	public PrintView(Dbservice service) {
         this.service = service;
         configureGrid();
@@ -192,6 +186,8 @@ public class PrintView extends HorizontalLayout{
 			} else {
 				try {
 					
+					// Validate once before any record is saved; use the same safe HTML in the report.
+					String safeCopyTo = inlineEditor.getValue();
 					int selecteditems = installments.size();
 					String schemelabel=changeAmp(installments.get(0).getWork().getScheme().getSchemeLabel());
 					String blocklabel=changeAmp(installments.get(0).getWork().getBlock().getBlockLabel());
@@ -213,7 +209,7 @@ public class PrintView extends HorizontalLayout{
 						singleinstallment.setInstallmentDate(instdate.getValue());
 						singleinstallment.setInstallmentLetter(instletter.getValue());
 						//singleinstallment.setInstallmentCheque(installmentcheque.getValue());
-						singleinstallment.setCopyTo(inlineEditor.getValue());
+						singleinstallment.setCopyTo(safeCopyTo);
 						service.saveInstallment(singleinstallment);
 						Work singlework = singleinstallment.getWork();
 						if (singleinstallment.getUcLetter() == null) {
@@ -237,7 +233,7 @@ public class PrintView extends HorizontalLayout{
 					JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(installments);
 					Map<String, Object> parameters = new HashMap<>();
 
-					parameters.put("copyTo", inlineEditor.getValue());
+					parameters.put("copyTo", safeCopyTo);
 					
 					parameters.put("Note", note.getValue());
 					parameters.put("ComplDate", "");
@@ -262,10 +258,12 @@ public class PrintView extends HorizontalLayout{
 					hl4.add(pdfViewerrange);
 					 	*/
 					addLinkToFile(a);
+				} catch (IllegalArgumentException e) {
+					notify.show("Release notes are too long. Shorten the formatted content and try again.", 5000, Position.TOP_CENTER);
 				} catch (Exception e) {
-					notify.show("Unable To Generate Report. Error:" + e, 5000, Position.TOP_CENTER);
+					notify.show("Unable to generate the report. Please contact the administrator.", 5000, Position.TOP_CENTER);
 					// Position.TOP_CENTER);
-					e.printStackTrace();
+					org.slf4j.LoggerFactory.getLogger(PrintView.class).warn("Release report failed: type={}", e.getClass().getSimpleName());
 
 				}
 			}
@@ -376,19 +374,19 @@ public class PrintView extends HorizontalLayout{
         for (Installment installment : installs) {
             total = total.add(installment.getInstallmentAmount());
         }
-		String mla=work.getConstituency().getConstituencyMLA();
-		String consti=work.getConstituency().getConstituencyName();
-		String dept=work.getScheme().getSchemeDept();
-		String block=work.getBlock().getBlockLabel();
+		String mla=plainText(work.getConstituency().getConstituencyMLA());
+		String consti=plainText(work.getConstituency().getConstituencyName());
+		String dept=plainText(work.getScheme().getSchemeDept());
+		String block=plainText(work.getBlock().getBlockLabel());
 		District district=work.getDistrict();
-		String districtname=district.getDistrictName();
-		String districthq=district.getDistrictHq();
-		String statehq=district.getState().getStateHq();
-		String state=district.getState().getStateName();
+		String districtname=plainText(district.getDistrictName());
+		String districthq=plainText(district.getDistrictHq());
+		String statehq=plainText(district.getState().getStateHq());
+		String state=plainText(district.getState().getStateName());
 		int schemeduration = work.getScheme().getSchemeDuration();
 		LocalDate sancDate = work.getSanctionDate();
 		LocalDate complDate = sancDate.plusMonths(schemeduration);
-		String bdo=work.getBlock().getBlockDevelopmentOfficer();
+		String bdo=plainText(work.getBlock().getBlockDevelopmentOfficer());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		//compldate.setValue(complDate);
 		if(installs.get(0).getCopyTo()!=null) {
@@ -425,6 +423,10 @@ public class PrintView extends HorizontalLayout{
 						+ "</ol><p>&nbsp;</p><p>&nbsp;</p>");
 			}
 		}
+	}
+
+	private static String plainText(String value) {
+		return HtmlUtils.htmlEscape(value == null ? "" : value);
 	}
 
 	public void populateGrid() {

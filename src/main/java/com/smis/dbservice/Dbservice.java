@@ -233,16 +233,14 @@ public class Dbservice implements Serializable{
 		return irepo.getReportData(scheme, getDistrict(), year, consti, block);
 	}
 
-	public void saveInstallment(Installment install) {
-		try {
-			if (install == null) {
+	@org.springframework.beans.factory.annotation.Autowired
+	private com.smis.security.richtext.RichTextContentService richTextContent;
 
-				return;
-			}
-			irepo.save(install);
-		} catch (Exception e) {
-			Notification.show("Unable to Save Installment. Error:" + e, 5000, Position.TOP_CENTER);
-		}
+	@org.springframework.transaction.annotation.Transactional
+	public void saveInstallment(Installment install) {
+		if (install == null) return;
+		richTextContent.prepare(install);
+		irepo.save(install);
 	}
 
 	public void deleteInstallments(Work work) {
@@ -323,17 +321,11 @@ public class Dbservice implements Serializable{
 		return wrepo.findByScheme(scheme).size();
 	}
 
+	@org.springframework.transaction.annotation.Transactional
 	public void saveWork(Work work) {
-		try {
-			if (work == null) {
-
-				return;
-			}
-			wrepo.save(work);
-		} catch (Exception e) {
-
-			Notification.show("Unable to Save Work. Error:" + e, 5000, Position.TOP_CENTER);
-		}
+		if (work == null) return;
+		richTextContent.prepare(work);
+		wrepo.save(work);
 	}
 
 	public void deleteWork(Work work) {

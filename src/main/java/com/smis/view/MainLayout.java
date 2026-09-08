@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
@@ -13,6 +14,7 @@ import com.smis.entity.UsersRoles;
 import com.smis.entity.State;
 import com.smis.entity.Users;
 import com.smis.security.SecurityService;
+import com.smis.security.noauth.NoAuthTestUser;
 import com.smis.view.processflow.WorkViewNew;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -27,6 +29,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.menubar.MenuBarVariant;
 import com.vaadin.flow.component.notification.Notification;
@@ -70,9 +73,11 @@ public class MainLayout extends AppLayout  {
 	boolean isSuper;
 	//private boolean isPasswordExpired;
 	Anchor anchor = new Anchor("", "SMIS 2.0");
+	private final boolean noAuthTestMode;
 
-	public MainLayout(Dbservice dbservice) {
+	public MainLayout(Dbservice dbservice, Environment environment) {
 		this.service = dbservice;
+		this.noAuthTestMode = environment.matchesProfiles(NoAuthTestUser.PROFILE);
 		usertype.setItems("ADMIN", "USER");
 		isAdmin = service.isAdmin();
 		isSuper = service.isSuperAdmin();
@@ -160,7 +165,18 @@ public class MainLayout extends AppLayout  {
 		// anchor.setTarget("/");
 		H3 logo = new H3("SMIS 2.0  || " + service.getDistrict().getDistrictName().toUpperCase());
 		// logo.addClassNames("text-s", "m-m");
-		HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), logo, menuBar);
+		HorizontalLayout header = new HorizontalLayout();
+		header.add(new DrawerToggle());
+		if (noAuthTestMode) {
+			Span testModeBanner = new Span("TEST MODE – AUTHENTICATION DISABLED");
+			testModeBanner.getElement().setAttribute("role", "alert");
+			testModeBanner.addClassName("no-auth-test-banner");
+			testModeBanner.getStyle().set("background", "#b00020").set("color", "white")
+					.set("font-weight", "700").set("padding", "var(--lumo-space-s) var(--lumo-space-m)")
+					.set("border-radius", "var(--lumo-border-radius-m)");
+			header.add(testModeBanner);
+		}
+		header.add(logo, menuBar);
 		header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
 		header.expand(logo);
 		header.setWidthFull();
