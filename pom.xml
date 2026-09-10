@@ -136,6 +136,13 @@
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>6.20.6</version>
+            <exclusions>
+                <!-- Spring supplies the Commons Logging API through spring-jcl. -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
@@ -206,7 +213,8 @@
                                 <goals>
                                     <goal>build-frontend</goal>
                                 </goals>
-                                <phase>process-resources</phase>
+                                <!-- Scan compiled application views and the AppShell theme. -->
+                                <phase>prepare-package</phase>
                             </execution>
                         </executions>
                     </plugin>

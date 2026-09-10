@@ -1,5 +1,21 @@
 # SMIS
 
+## Tomcat deployment
+
+Build the deployable WAR with JDK 17 using the production Maven profile:
+
+```powershell
+.\mvnw.cmd clean package -Pproduction
+```
+
+Deploy the WAR from `target` to Tomcat 10.1. The production build compiles the
+Java views before generating the Vaadin JavaScript bundle and application theme.
+Do not deploy an IDE-exported WAR or a development build.
+When replacing an existing deployment, stop or undeploy that application first
+and replace its old expanded application directory along with the WAR.
+If the browser retains an older PWA bundle, clear site data for the deployment
+and reload.
+
 ## Temporary local no-auth testing
 
 For local UI testing only, start the application with the `no-auth-test` Spring profile:

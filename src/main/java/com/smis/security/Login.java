@@ -314,6 +314,10 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 	}
 
 	private void regenerateCaptcha() {
+		// CAPTCHA is optional and may not have been added to the login form.
+		if (image == null) {
+			return;
+		}
 		captchacontainer.remove(image);
 		captchacontainer.remove(refreshButton);
 		captchacontainer.remove(captchatext);
