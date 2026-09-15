@@ -33,16 +33,18 @@ Spring Security's built-in CSP, frame-options, HSTS and permissions-policy DSL s
 ```text
 default-src 'self'; base-uri 'self'; object-src 'none';
 frame-ancestors 'none'; form-action 'self';
-script-src 'self' 'unsafe-inline' 'unsafe-eval';
+script-src 'self' 'nonce-<fresh-response-nonce>';
 style-src 'self' 'unsafe-inline';
 img-src 'self' blob: data:;
 font-src 'self' data:;
 connect-src 'self';
 frame-src 'self' blob:;
-media-src 'self'; manifest-src 'self'; worker-src 'self' blob:
+media-src 'self'; manifest-src 'self'; worker-src 'self' blob:;
+require-trusted-types-for 'script';
+trusted-types default dompurify lit-html polymer-html-literal polymer-template-event-attribute-policy
 ```
 
-This is sent as exactly one **enforced Content-Security-Policy**, not report-only. Ordinary Vaadin bootstrap needs the script/style allowances documented by [Vaadin's common security issues](https://vaadin.com/docs/v24/flow/security/advanced-topics/frequent-issues). The substantially different [nonce-based strict-CSP integration](https://vaadin.com/docs/v24/flow/security/advanced-topics/strict-csp) is outside this change.
+This is sent as exactly one **enforced Content-Security-Policy**, not report-only. The nonce is generated for each bootstrap response by the Flow index listener; non-bootstrap responses omit the nonce and Trusted Types directives. Spring's CSP writer preserves the policy already set by the listener. See [the CSP and UIDL remediation report](csp-uidl-remediation.md) for compatibility mappings, tests and deployment acceptance requirements. Inline styles remain allowed; inline scripts and runtime string compilation do not.
 
 The only URL-scheme exceptions beyond self are tied to inspected components:
 

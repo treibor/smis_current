@@ -151,6 +151,9 @@ public class SecurityConfiguration extends VaadinWebSecurity {
                     // Container error dispatches retain their original 4xx/5xx status;
                     // direct client requests to /error still follow normal authorization.
                     .dispatcherTypeMatchers(jakarta.servlet.DispatcherType.ERROR).permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/security/purify.min.js", "GET"),
+                            new AntPathRequestMatcher("/security/csp-registry.js", "GET"),
+                            new AntPathRequestMatcher("/security/csp-compat.js", "GET")).permitAll()
                     .requestMatchers(new AntPathRequestMatcher("/images/*.png")).permitAll());
 		NoAuthTestAuthenticationFilter testFilter = noAuthTestFilter.getIfAvailable();
 		if (testFilter != null) {

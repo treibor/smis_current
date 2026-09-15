@@ -29,9 +29,12 @@ function Check-Response([string]$Path, [string]$Method, [int]$ExpectedStatus) {
         $policies = @($response.Headers.GetValues('Content-Security-Policy'))
         if ($policies.Count -ne 1) { throw "Expected exactly one CSP on $Path" }
         $directives = @($policies[0].Split(';') | ForEach-Object { $_.Trim() })
-        foreach ($required in @("default-src 'self'", "base-uri 'self'", "object-src 'none'", "frame-ancestors 'none'", "script-src 'self' 'unsafe-inline' 'unsafe-eval'", "style-src 'self' 'unsafe-inline'")) {
+        foreach ($required in @("default-src 'self'", "base-uri 'self'", "object-src 'none'", "frame-ancestors 'none'", "style-src 'self' 'unsafe-inline'")) {
             if ($directives -notcontains $required) { throw "Missing required CSP directive on $Path" }
         }
+        $scriptPolicy = @($directives | Where-Object { $_.StartsWith('script-src ') })
+        if ($scriptPolicy.Count -ne 1 -or $scriptPolicy[0].Contains("'unsafe-inline'") -or $scriptPolicy[0].Contains("'unsafe-eval'")) { throw "Unsafe or missing script policy on $Path" }
+        if ($Path -eq '/login' -and $directives -notcontains "require-trusted-types-for 'script'") { throw 'Trusted Types enforcement missing on bootstrap HTML' }
         if ($response.Headers.Contains('Set-Cookie')) {
             foreach ($cookie in $response.Headers.GetValues('Set-Cookie')) {
                 if ($cookie.StartsWith('SameSite=')) { throw 'Fake session cookie found' }
