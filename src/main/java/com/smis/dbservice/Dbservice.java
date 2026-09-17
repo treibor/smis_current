@@ -1,5 +1,7 @@
 package com.smis.dbservice;
 
+import com.smis.security.ErrorReferences;
+
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,6 +17,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.smis.entity.Block;
 import com.smis.entity.Constituency;
@@ -68,6 +76,8 @@ public class Dbservice implements Serializable{
 	private final StateRepository strepo;
 	private final VillageRepository vtrepo;
 	private final RoleRepository rolerepo;
+	@Autowired
+	private SessionRegistry sessionRegistry;
 	
 	//Notification Notification = new Notification();
 	//@Autowired
@@ -167,12 +177,27 @@ public class Dbservice implements Serializable{
 		return auth.getName();
 	}
 
+	@Transactional
 	public void saveUser(Users user) {
 		if (user == null) {
 			Notification.show("Fail Fail Fail-7734");
 			return;
 		}
 		urepo.save(user);
+		if (!user.isEnabled()) {
+			String username = user.getUserName();
+			// Do not revoke sessions if the database update rolls back.
+			TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+				@Override
+				public void afterCommit() {
+					for (Object principal : sessionRegistry.getAllPrincipals()) {
+						if (principal instanceof UserDetails details && username.equals(details.getUsername())) {
+							sessionRegistry.getAllSessions(principal, false).forEach(session -> session.expireNow());
+						}
+					}
+				}
+			});
+		}
 
 	}
 
@@ -247,7 +272,7 @@ public class Dbservice implements Serializable{
 		try {
 			irepo.deleteByWork(work);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Installment. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -334,7 +359,7 @@ public class Dbservice implements Serializable{
 			wrepo.delete(work);
 			Notification.show("Deleted Successfully");
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Work. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -347,7 +372,7 @@ public class Dbservice implements Serializable{
 			}
 			crepo.save(consti);
 		} catch (Exception e) {
-			Notification.show("Unable to Save Constituency. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -356,7 +381,7 @@ public class Dbservice implements Serializable{
 		try {
 			crepo.delete(consti);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -373,7 +398,7 @@ public class Dbservice implements Serializable{
 		try {
 			yrepo.delete(year);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Year " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -386,7 +411,7 @@ public class Dbservice implements Serializable{
 			}
 			srepo.save(scheme);
 		} catch (Exception e) {
-			Notification.show("Unable to Save Scheme " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -395,7 +420,7 @@ public class Dbservice implements Serializable{
 		try {
 			srepo.delete(scheme);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -409,7 +434,7 @@ public class Dbservice implements Serializable{
 			}
 			brepo.save(block);
 		} catch (DataIntegrityViolationException e) {
-			Notification.show("Unable to Save Block/MB as It already Exists" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -417,7 +442,7 @@ public class Dbservice implements Serializable{
 		try {
 			brepo.delete(block);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -430,7 +455,7 @@ public class Dbservice implements Serializable{
 			}
 			strepo.save(state);
 		} catch (Exception e) {
-			Notification.show("Unable to Save State" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -438,7 +463,7 @@ public class Dbservice implements Serializable{
 		try {
 			strepo.delete(state);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -459,7 +484,7 @@ public class Dbservice implements Serializable{
 			idrepo.delete(impdist);
 			drepo.delete(dist);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete District " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -606,7 +631,7 @@ public class Dbservice implements Serializable{
 	            rolerepo.save(role); // Save or update the role
 	        }
 	    } catch (Exception e) {
-	        Notification.show("Unable to Save Role. Error: " + e, 5000, Position.TOP_CENTER)
+	        Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER)
 	                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
 	    }
 	}
@@ -616,7 +641,7 @@ public class Dbservice implements Serializable{
 	            rolerepo.delete(role); // Save or update the role
 	        }
 	    } catch (Exception e) {
-	        Notification.show("Unable to Save Role. Error: " + e, 5000, Position.TOP_CENTER)
+	        Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER)
 	                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
 	    }
 	}

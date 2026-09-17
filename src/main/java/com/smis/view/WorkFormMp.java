@@ -1,5 +1,7 @@
 package com.smis.view;
 
+import com.smis.security.ErrorReferences;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -300,7 +302,7 @@ public class WorkFormMp extends VerticalLayout{
 				fireEvent(new SaveEvent(this, work));
 				
 			}catch(Exception e) {
-				notify.show("Unable to Save Work. Please Enter All Mandatory Fields"+e, 5000, Position.TOP_CENTER);
+				Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 				
 			}
 		}
@@ -337,7 +339,7 @@ public class WorkFormMp extends VerticalLayout{
 				notify.show("Installment No:"+toEnterInstallment+" Entered Sucessfully",5000, Position.TOP_CENTER);
 				//notify.show("Installment No:"+toEnterInstallment+" Entered Sucessfully",5000, Position.TOP_CENTER);
 			}catch(Exception e) {
-				notify.show("Unable to Save Work"+e);
+				Notification.show(ErrorReferences.userMessage(e));
 				
 			}
 		}
@@ -380,7 +382,7 @@ public class WorkFormMp extends VerticalLayout{
 				}
 				notify.show("UC:" + toEnterInstallment + " Entered Sucessfully", 5000, Position.TOP_CENTER);
 			} catch (Exception e) {
-				notify.show("Unable to Save Work" + e);
+				Notification.show(ErrorReferences.userMessage(e));
 				
 			}
 		}
@@ -392,7 +394,7 @@ public class WorkFormMp extends VerticalLayout{
 			work.setWorkStatus(text);
 			fireEvent(new SaveEvent(this, work));
 		} catch (Exception e) {
-			notify.show("Unable to Save Work" + e);
+			Notification.show(ErrorReferences.userMessage(e));
 			
 		}
 

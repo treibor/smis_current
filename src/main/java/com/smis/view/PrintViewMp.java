@@ -1,5 +1,7 @@
 package com.smis.view;
 
+import com.smis.security.ErrorReferences;
+
 import java.io.File;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -243,7 +245,7 @@ public class PrintViewMp extends VerticalLayout{
 					hl4.add(pdfViewerrange);
 
 				} catch (Exception e) {
-					notify.show("Unable TO Generate Report. Error:" + e, 5000, Position.TOP_CENTER);
+					Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 					// Position.TOP_CENTER);
 					
 

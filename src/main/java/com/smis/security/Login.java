@@ -47,10 +47,10 @@ import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.VaadinService;
 import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.VaadinServletResponse;
-import com.vaadin.flow.server.WrappedSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Route("login")
 @AnonymousAllowed
@@ -181,17 +181,8 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		String username = decryptUsername(encryptedUsername, dynamicKey);
 		String password = decryptPassword(encryptedPassword, dynamicKey);
 		try {
-			invalidatePreviousSessionsForUser(username);
-			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
-			Authentication authentication = this.authenticationManager.authenticate(token);
-			SecurityContextHolder.getContext().setAuthentication(authentication);
-			SecurityContext context = this.securityContextHolderStrategy.createEmptyContext();
-			context.setAuthentication(authentication);
-			this.securityContextHolderStrategy.setContext(context);
-			securityRepo.saveContext(context, VaadinServletRequest.getCurrent(), VaadinServletResponse.getCurrent());
-			// registerSession(ServletContext, (UserDetails) authentication.getPrincipal());
-			registerSession(VaadinService.getCurrentRequest().getWrappedSession(),
-					(UserDetails) authentication.getPrincipal());
+			authenticateSession(username, password, VaadinServletRequest.getCurrent().getHttpServletRequest(),
+					VaadinServletResponse.getCurrent().getHttpServletResponse());
 			
 			audit.saveLoginAudit("Login Successfully", username);
 			UI.getCurrent().navigate(HomeView.class);
@@ -225,8 +216,22 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		return new String(Base64.getDecoder().decode(encryptedPassword));
 	}
 
-	private void registerSession(WrappedSession session, UserDetails userDetails) {
-		sr.registerNewSession(session.getId(), userDetails);
+	void authenticateSession(String username, String password, HttpServletRequest request,
+			HttpServletResponse response) {
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(username, password));
+		// Rotate the servlet ID while preserving Vaadin's session/UI attributes.
+		request.getSession(true);
+		String previousId = request.getSession().getId();
+		request.changeSessionId();
+		// Only a verified identity may replace that account's previous sessions.
+		invalidatePreviousSessionsForUser(authentication.getName());
+		sr.removeSessionInformation(previousId);
+		sr.registerNewSession(request.getSession().getId(), authentication.getPrincipal());
+		SecurityContext context = securityContextHolderStrategy.createEmptyContext();
+		context.setAuthentication(authentication);
+		securityRepo.saveContext(context, request, response);
+		securityContextHolderStrategy.setContext(context);
 	}
 
 	public int getActiveSessionCountForUser(String username) {

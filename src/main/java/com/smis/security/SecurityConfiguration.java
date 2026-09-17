@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -72,6 +73,14 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 	}
 
 	@Bean
+	FilterRegistrationBean<RateLimitingFilter> rateLimitingFilterRegistration() {
+		var registration = new FilterRegistrationBean<>(rateLimitingFilter);
+		// The security chain owns ordering and must invoke this filter exactly once.
+		registration.setEnabled(false);
+		return registration;
+	}
+
+	@Bean
 	public SessionRegistry sessionRegistry() {
 		return new SessionRegistryImpl();
 	}
@@ -129,10 +138,9 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		//.addFilterBefore(rateLimitingFilter, ChannelProcessingFilter.class)
+        .addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
         // Reject the same methods, after header writing is installed and before CSRF/authentication.
         .addFilterBefore(disableOptionsMethodFilter(), CsrfFilter.class)
-        //.addFilterAfter(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
 		.headers(headers -> headers
                 .contentSecurityPolicy(csp -> csp.policyDirectives(SecurityHeadersPolicy.CSP))
                 .frameOptions(frame -> frame.deny())

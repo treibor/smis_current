@@ -1,5 +1,7 @@
 package com.smis.view.processflow;
 
+import com.smis.security.ErrorReferences;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -377,7 +379,7 @@ public class WorkFormNew extends VerticalLayout {
 				// notify.show("Installment No:"+toEnterInstallment+" Entered Sucessfully",5000,
 				// Position.TOP_CENTER);
 			} catch (Exception e) {
-				Notification.show("Unable to Save Work" + e);
+				Notification.show(ErrorReferences.userMessage(e));
 
 			}
 		}
@@ -424,7 +426,7 @@ public class WorkFormNew extends VerticalLayout {
 				
 				Notification.show("UC:" + toEnterInstallment + " Entered Sucessfully", 5000, Position.TOP_CENTER);
 			} catch (Exception e) {
-				Notification.show("Unable to Save Work" + e);
+				Notification.show(ErrorReferences.userMessage(e));
 
 			}
 		}
@@ -436,7 +438,7 @@ public class WorkFormNew extends VerticalLayout {
 			work.setWorkStatus(text);
 			fireEvent(new SaveEvent(this, work));
 		} catch (Exception e) {
-			Notification.show("Unable to Save Work" + e);
+			Notification.show(ErrorReferences.userMessage(e));
 
 		}
 

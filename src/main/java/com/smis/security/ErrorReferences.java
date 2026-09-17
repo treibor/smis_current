@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 /** Exception messages can contain SQL parameters or tokens; log types and frames only. */
 public final class ErrorReferences {
     private ErrorReferences() {}
+    public static String userMessage(Throwable error) {
+        return "Unable to complete the request. Reference: " + record(error);
+    }
     public static String record(Throwable error) {
         String reference = UUID.randomUUID().toString();
         StringBuilder detail = new StringBuilder();

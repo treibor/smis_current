@@ -11,6 +11,22 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 
 class ErrorReferencesTest {
+    @Test void notificationMessageContainsOnlyGenericTextAndLoggedReference() {
+        var logger = (Logger) LoggerFactory.getLogger(ErrorReferences.class);
+        var appender = new ListAppender<ILoggingEvent>();
+        appender.start();
+        logger.addAppender(appender);
+        try {
+            String message = ErrorReferences.userMessage(new IllegalStateException("SQL secret-password"));
+            assertThat(message).matches("Unable to complete the request\\. Reference: [0-9a-f-]{36}");
+            assertThat(message).doesNotContain("SQL", "secret-password", "IllegalStateException");
+            assertThat(appender.list).hasSize(1);
+            assertThat(appender.list.get(0).getFormattedMessage())
+                    .contains(message.substring(message.lastIndexOf(' ') + 1), "IllegalStateException")
+                    .doesNotContain("secret-password");
+        } finally { logger.detachAppender(appender); }
+    }
+
     @Test void logsReferenceAndOriginWithoutExceptionMessagesAndSuppressesDebugAttributes() {
         var logger = (Logger) LoggerFactory.getLogger(ErrorReferences.class);
         var appender = new ListAppender<ILoggingEvent>();
