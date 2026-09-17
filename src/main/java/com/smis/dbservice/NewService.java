@@ -1,5 +1,7 @@
 package com.smis.dbservice;
 
+import com.smis.security.ErrorReferences;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -219,23 +221,21 @@ public class NewService implements Serializable{
 		return irepo.getReportData(scheme, getDistrict(), year, consti, block);
 	}
 
-	public void saveInstallment(InstallmentNew install) {
-		try {
-			if (install == null) {
+	@Autowired
+	private com.smis.security.richtext.RichTextContentService richTextContent;
 
-				return;
-			}
-			irepo.save(install);
-		} catch (Exception e) {
-			Notification.show("Unable to Save Installment. Error:" + e, 5000, Position.TOP_CENTER);
-		}
+	@org.springframework.transaction.annotation.Transactional
+	public void saveInstallment(InstallmentNew install) {
+		if (install == null) return;
+		richTextContent.prepare(install);
+		irepo.save(install);
 	}
 
 	public void deleteInstallments(WorkNew work) {
 		try {
 			irepo.deleteByWork(work);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Installment. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -305,7 +305,7 @@ public class NewService implements Serializable{
 			wrepo.save(work);
 		} catch (Exception e) {
 
-			Notification.show("Unable to Save Work. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -315,7 +315,7 @@ public class NewService implements Serializable{
 			wrepo.delete(work);
 			Notification.show("Deleted Successfully");
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Work. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -328,7 +328,7 @@ public class NewService implements Serializable{
 			}
 			crepo.save(consti);
 		} catch (Exception e) {
-			Notification.show("Unable to Save Constituency. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -337,7 +337,7 @@ public class NewService implements Serializable{
 		try {
 			crepo.delete(consti);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -354,7 +354,7 @@ public class NewService implements Serializable{
 		try {
 			yrepo.delete(year);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Year " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -367,7 +367,7 @@ public class NewService implements Serializable{
 			}
 			srepo.save(scheme);
 		} catch (Exception e) {
-			Notification.show("Unable to Save Scheme " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -376,7 +376,7 @@ public class NewService implements Serializable{
 		try {
 			srepo.delete(scheme);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -390,7 +390,7 @@ public class NewService implements Serializable{
 			}
 			brepo.save(block);
 		} catch (DataIntegrityViolationException e) {
-			Notification.show("Unable to Save Block/MB as It already Exists" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -398,7 +398,7 @@ public class NewService implements Serializable{
 		try {
 			brepo.delete(block);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -411,7 +411,7 @@ public class NewService implements Serializable{
 			}
 			strepo.save(state);
 		} catch (Exception e) {
-			Notification.show("Unable to Save State" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -419,7 +419,7 @@ public class NewService implements Serializable{
 		try {
 			strepo.delete(state);
 		} catch (Exception e) {
-			Notification.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 
 	}
@@ -555,7 +555,7 @@ public class NewService implements Serializable{
 	            rolerepo.save(role); // Save or update the role
 	        }
 	    } catch (Exception e) {
-	        Notification.show("Unable to Save Role. Error: " + e, 5000, Position.TOP_CENTER)
+	        Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER)
 	                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
 	    }
 	}
@@ -565,7 +565,7 @@ public class NewService implements Serializable{
 	            rolerepo.delete(role); // Save or update the role
 	        }
 	    } catch (Exception e) {
-	        Notification.show("Unable to Save Role. Error: " + e, 5000, Position.TOP_CENTER)
+	        Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER)
 	                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
 	    }
 	}

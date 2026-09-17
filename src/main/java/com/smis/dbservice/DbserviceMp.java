@@ -1,5 +1,7 @@
 package com.smis.dbservice;
 
+import com.smis.security.ErrorReferences;
+
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
@@ -112,7 +114,7 @@ public class DbserviceMp {
 		try {
 			urepo.save(user);
 		} catch (Exception e) {
-			notify.show("Unable to Save User. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 	
@@ -148,7 +150,7 @@ public class DbserviceMp {
 		try {
 			irepo.save(install);
 		}catch(Exception e) {
-			notify.show("Unable to Save Installment. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 	
@@ -156,7 +158,7 @@ public class DbserviceMp {
 		try {
 			irepo.deleteByWorkmp(work);
 		}catch(Exception e) {
-			notify.show("Unable to Delete Installment. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 	
@@ -195,7 +197,7 @@ public class DbserviceMp {
 		try {
 			wrepo.save(work);
 		}catch(Exception e) {
-			notify.show("Unable to Save Work. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 		
 	}
@@ -204,7 +206,7 @@ public class DbserviceMp {
 		try {
 			wrepo.delete(work);
 		}catch(Exception e) {
-			notify.show("Unable to delete Work. Error:" + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 	
@@ -220,7 +222,7 @@ public class DbserviceMp {
 		try {
 			crepo.delete(consti);
 		}catch(Exception e) {
-			notify.show("Unable to Delete Constituency "+e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -237,7 +239,7 @@ public class DbserviceMp {
 		try {
 		yrepo.delete(year);
 		}catch (Exception e) {
-			notify.show("Unable to Delete Year "+e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 
@@ -255,7 +257,7 @@ public class DbserviceMp {
 		try {
 			brepo.delete(block);
 		} catch (Exception e) {
-			notify.show("Unable to Delete Constituency " + e, 5000, Position.TOP_CENTER);
+			Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 		}
 	}
 	

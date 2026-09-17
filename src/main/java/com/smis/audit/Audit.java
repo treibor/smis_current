@@ -16,8 +16,6 @@ public class Audit {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private AuditService auditservice;
-	//@Autowired
-	AuditTrail audit;
 	private Dbservice uservice;
 	
 	
@@ -37,7 +35,7 @@ public class Audit {
 	}
 
 	public void saveAudit(Work work, String action) {
-		audit=new AuditTrail();
+		AuditTrail audit=new AuditTrail();
 		audit.setAction(action);
 		audit.setActionBy(uservice.getloggeduser());
 		audit.setActionOn(LocalDateTime.now());
@@ -47,7 +45,7 @@ public class Audit {
 		auditservice.updateAudit(audit);
 	}
 	public void saveAudit(WorkNew work, String action) {
-		audit=new AuditTrail();
+		AuditTrail audit=new AuditTrail();
 		audit.setAction(action);
 		audit.setActionBy(uservice.getloggeduser());
 		audit.setActionOn(LocalDateTime.now());
@@ -57,7 +55,7 @@ public class Audit {
 		auditservice.updateAudit(audit);
 	}
 	public void saveLoginAudit(String action, String details) {
-		audit=new AuditTrail();
+		AuditTrail audit=new AuditTrail();
 		audit.setAction(action);
 		audit.setActionOn(LocalDateTime.now());
 		audit.setDetails(details);

@@ -1,5 +1,7 @@
 package com.smis.view;
 
+import com.smis.security.ErrorReferences;
+
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
@@ -236,7 +238,7 @@ public class ReportView extends VerticalLayout {
 				// removePdfViewer();
 
 			} catch (Exception e) {
-				Notification.show("Error:" + e, 5000, Position.TOP_CENTER);
+				Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 				
 			}
 		}
@@ -304,7 +306,7 @@ public class ReportView extends VerticalLayout {
 				// removePdfViewer();
 
 			} catch (Exception e) {
-				Notification.show("Error:" + e, 5000, Position.TOP_CENTER);
+				Notification.show(ErrorReferences.userMessage(e), 5000, Position.TOP_CENTER);
 				
 			}
 		}

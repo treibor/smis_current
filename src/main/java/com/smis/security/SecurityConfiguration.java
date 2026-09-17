@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,16 +16,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
 import org.springframework.security.web.context.DelegatingSecurityContextRepository;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
-import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy;
-import org.springframework.security.web.header.writers.StaticHeadersWriter;
-import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
+import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -31,6 +30,7 @@ import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
+import com.smis.security.noauth.NoAuthTestAuthenticationFilter;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -46,6 +46,11 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SecurityConfiguration extends VaadinWebSecurity {
 	@Autowired
 	private RateLimitingFilter rateLimitingFilter;
+	private final ObjectProvider<NoAuthTestAuthenticationFilter> noAuthTestFilter;
+
+	public SecurityConfiguration(ObjectProvider<NoAuthTestAuthenticationFilter> noAuthTestFilter) {
+		this.noAuthTestFilter = noAuthTestFilter;
+	}
 	
 	@Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -65,6 +70,14 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	FilterRegistrationBean<RateLimitingFilter> rateLimitingFilterRegistration() {
+		var registration = new FilterRegistrationBean<>(rateLimitingFilter);
+		// The security chain owns ordering and must invoke this filter exactly once.
+		registration.setEnabled(false);
+		return registration;
 	}
 
 	@Bean
@@ -125,22 +138,14 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		//.addFilterBefore(rateLimitingFilter, ChannelProcessingFilter.class)
-        .addFilterBefore(disableOptionsMethodFilter(), ChannelProcessingFilter.class)
-        //.addFilterAfter(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
+        // Reject the same methods, after header writing is installed and before CSRF/authentication.
+        .addFilterBefore(disableOptionsMethodFilter(), CsrfFilter.class)
 		.headers(headers -> headers
-				.addHeaderWriter(new StaticHeadersWriter("Strict-Transport-Security", "max-age=31536000"))
-	            .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
-	            .addHeaderWriter(new StaticHeadersWriter("X-Content-Type-Options", "nosniff"))
-	            .addHeaderWriter(new StaticHeadersWriter("X-Frame-Options", "DENY"))
-	            .addHeaderWriter(new StaticHeadersWriter("X-XSS-Protection", "1; mode=block"))
-	            //.addHeaderWriter(new StaticHeadersWriter("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none';"))
-	            .addHeaderWriter(new StaticHeadersWriter("Permissions-Policy", "geolocation=(self), microphone=()"))
-	            .addHeaderWriter(new StaticHeadersWriter("Set-Cookie", "SameSite=Strict; HttpOnly; Secure;"))
-	            .addHeaderWriter(new StaticHeadersWriter("Expect-CT", "max-age=86400, enforce"))
-	            .addHeaderWriter(new StaticHeadersWriter("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"))
-	            .addHeaderWriter(new StaticHeadersWriter("Pragma", "no-cache"))
-	            .referrerPolicy(referrer -> referrer.policy(ReferrerPolicy.SAME_ORIGIN)))
+                .contentSecurityPolicy(csp -> csp.policyDirectives(SecurityHeadersPolicy.CSP))
+                .frameOptions(frame -> frame.deny())
+                .httpStrictTransportSecurity(hsts -> hsts.maxAgeInSeconds(31536000).includeSubDomains(false))
+                .permissionsPolicy(permissions -> permissions.policy("geolocation=(self), microphone=()")))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 						.invalidSessionUrl("/")
 						.sessionConcurrency(concurrency -> concurrency.maximumSessions(1).expiredUrl("/")
@@ -150,7 +155,18 @@ public class SecurityConfiguration extends VaadinWebSecurity {
 						
 		);
 		http.authorizeHttpRequests(
-				authorize -> authorize.requestMatchers(new AntPathRequestMatcher("/images/*.png")).permitAll());
+				authorize -> authorize
+                    // Container error dispatches retain their original 4xx/5xx status;
+                    // direct client requests to /error still follow normal authorization.
+                    .dispatcherTypeMatchers(jakarta.servlet.DispatcherType.ERROR).permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/security/purify.min.js", "GET"),
+                            new AntPathRequestMatcher("/security/csp-registry.js", "GET"),
+                            new AntPathRequestMatcher("/security/csp-compat.js", "GET")).permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/images/*.png")).permitAll());
+		NoAuthTestAuthenticationFilter testFilter = noAuthTestFilter.getIfAvailable();
+		if (testFilter != null) {
+			http.addFilterBefore(testFilter, UsernamePasswordAuthenticationFilter.class);
+		}
 		super.configure(http);
 		setLoginView(http, Login.class);
 		//setLoginView(http, LoginView.class);

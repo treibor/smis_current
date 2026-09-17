@@ -1,0 +1,3117 @@
+{
+  "functions": [
+    {
+      "code": "$0.addEventListener('items-changed', function(){ this.$server.updateSelectedTab(true); });",
+      "origin": "vaadin-tabs-flow-24.2.0.jar:com/vaadin/flow/component/tabs/Tabs.class"
+    },
+    {
+      "code": "$0.disabled = false;",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "$0.listenOn=$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "$0.requestContentUpdate();",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "$0.resizeRemove()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page$ResizeEventReceiver.class"
+    },
+    {
+      "code": "$0.serverConnected()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/webcomponent/WebComponentUI.class"
+    },
+    {
+      "code": "$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/scanner/FrontendAnnotatedClassVisitor.class"
+    },
+    {
+      "code": "$1$2",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/OpenInCurrentIde.class"
+    },
+    {
+      "code": "$1Frontend/generated/flow/generated-flow-imports.js",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/TaskUpdateOldIndexTs.class"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true) && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true) && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "Vaadin.Flow.clients[$0].getByNodeId($1)._flowId = $2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "Vaadin.FlowComponentHost.patchVirtualContainer(this)",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "Vaadin.devTools.showNotification('warning', '@PreserveOnRefresh enabled', 'When refreshing the page in the browser, the server-side Java view instance is reused rather than being recreated.', null, 'preserveOnRefreshWarning')",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractNavigationStateRenderer.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/checkbox/CheckboxGroup$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/combobox/ComboBoxDataController$2",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController$2.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/grid/AbstractGridSingleSelectionModel$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridSingleSelectionModel$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/grid/Grid$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/listbox/ListBoxBase$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/radiobutton/RadioButtonGroup$1",
+      "origin": "vaadin-radio-button-flow-24.2.0.jar:com/vaadin/flow/component/radiobutton/RadioButtonGroup$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/component/select/Select$1",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select$1.class"
+    },
+    {
+      "code": "com/vaadin/flow/data/converter/Converter$2",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter$2.class"
+    },
+    {
+      "code": "const csrfParameterName = '%s';\nconst csrfCookieName = '%s';\nwindow.addEventListener('formdata', (e) => {\n  if (!e.formData.has(csrfParameterName)) {\n    return;\n  }\n\n  const cookies = new URLSearchParams(document.cookie.replace(/;\\s*/, '&'));\n  if (!cookies.has(csrfCookieName)) {\n    return;\n  }\n\n  e.formData.set(csrfParameterName, cookies.get(csrfCookieName));\n});\n",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/springcsrf/SpringCsrfTokenUtil.class"
+    },
+    {
+      "code": "const dropFiles = Object.assign({}, this.i18n.dropFiles, $0.dropFiles);const addFiles = Object.assign({}, this.i18n.addFiles, $0.addFiles);const error = Object.assign({}, this.i18n.error, $0.error);const uploadingStatus = Object.assign({}, this.i18n.uploading.status, $0.uploading && $0.uploading.status);const uploadingRemainingTime = Object.assign({}, this.i18n.uploading.remainingTime, $0.uploading && $0.uploading.remainingTime);const uploadingError = Object.assign({}, this.i18n.uploading.error, $0.uploading && $0.uploading.error);const uploading = {status: uploadingStatus,  remainingTime: uploadingRemainingTime,  error: uploadingError};const units = $0.units || this.i18n.units;this.i18n = Object.assign({}, this.i18n, $0, {  addFiles: addFiles,  dropFiles: dropFiles,  uploading: uploading, units: units});",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "const link = document.createElement('link');link.rel = 'stylesheet';link.type = 'text/css';link.href = $0;document.head.appendChild(link);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/WebComponentBootstrapHandler.class"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this.$.overlay;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.preventDefault();event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this.$.overlay'\"}",
+      "origin": "Flow ShortcutRegistration: ENTER / this.$.overlay"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this.$.overlay;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this.$.overlay'\"}",
+      "origin": "Flow ShortcutRegistration: ENTER / this.$.overlay"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this.$.overlay;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.preventDefault();event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this.$.overlay'\"}",
+      "origin": "Flow ShortcutRegistration: ESCAPE / this.$.overlay"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this.$.overlay;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this.$.overlay'\"}",
+      "origin": "Flow ShortcutRegistration: ESCAPE / this.$.overlay"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this._overlayElement;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.preventDefault();event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this._overlayElement'\"}",
+      "origin": "Flow ShortcutRegistration: ENTER / this._overlayElement"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this._overlayElement;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this._overlayElement'\"}",
+      "origin": "Flow ShortcutRegistration: ENTER / this._overlayElement"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this._overlayElement;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.preventDefault();event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this._overlayElement'\"}",
+      "origin": "Flow ShortcutRegistration: ESCAPE / this._overlayElement"
+    },
+    {
+      "code": "const listenOn=this;const delegate=this._overlayElement;if (delegate) {delegate.addEventListener('keydown', function(event) {if ((['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')) {const new_event = new event.constructor(event.type, event);listenOn.dispatchEvent(new_event);event.stopPropagation();}});} else {throw \"Shortcut listenOn element not found with JS locator string 'this._overlayElement'\"}",
+      "origin": "Flow ShortcutRegistration: ESCAPE / this._overlayElement"
+    },
+    {
+      "code": "const listener = (e) => {  if (e.type == 'vaadin-overlay-escape-press' && !this.noCloseOnEsc ||      e.type == 'vaadin-overlay-outside-click' && !this.noCloseOnOutsideClick) {    e.preventDefault();    this.$server.handleClientClose();  }};this.$.overlay.addEventListener('vaadin-overlay-outside-click', listener);this.$.overlay.addEventListener('vaadin-overlay-escape-press', listener);",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "document.css",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/WebComponentBootstrapHandler.class"
+    },
+    {
+      "code": "document.dir = $0",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "document.title = $0",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "event.altKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.button",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.clientX",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.clientY",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.code",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.ctrlKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.data",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/CompositionUpdateEvent.class"
+    },
+    {
+      "code": "event.dataTransfer.dropEffect",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DragEndEvent.class"
+    },
+    {
+      "code": "event.dataTransfer.effectAllowed",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DropEvent.class"
+    },
+    {
+      "code": "event.detail",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.detail <= 1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "event.detail == 2",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "event.detail.altKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.button",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.clientX",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.clientY",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.columns",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ColumnReorderEvent.class"
+    },
+    {
+      "code": "event.detail.ctrlKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.detail",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.dragData",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.dropLocation",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.dropTargetItem",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.error",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "event.detail.height",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog$DialogResizeEvent.class"
+    },
+    {
+      "code": "event.detail.internalColumnId",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.itemKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.metaKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.pageNumber",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/event/ThumbnailClickedEvent.class"
+    },
+    {
+      "code": "event.detail.password",
+      "origin": "vaadin-login-flow-24.2.0.jar:com/vaadin/flow/component/login/AbstractLogin$LoginEvent.class"
+    },
+    {
+      "code": "event.detail.resizedColumnKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ColumnResizeEvent.class"
+    },
+    {
+      "code": "event.detail.screenX",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.screenY",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.section",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/CellFocusEvent.class"
+    },
+    {
+      "code": "event.detail.shiftKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.username",
+      "origin": "vaadin-login-flow-24.2.0.jar:com/vaadin/flow/component/login/AbstractLogin$LoginEvent.class"
+    },
+    {
+      "code": "event.detail.valid",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/HasClientValidation$ClientValidatedEvent.class"
+    },
+    {
+      "code": "event.detail.value",
+      "origin": "vaadin-accordion-flow-24.2.0.jar:com/vaadin/flow/component/accordion/Accordion$OpenedChangeEvent.class"
+    },
+    {
+      "code": "event.detail.width",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog$DialogResizeEvent.class"
+    },
+    {
+      "code": "event.isComposing",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.key",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.locale",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/CompositionUpdateEvent.class"
+    },
+    {
+      "code": "event.location",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.metaKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.model.index",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/nodefeature/PolymerServerEventHandlers.class"
+    },
+    {
+      "code": "event.preventDefault()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "event.preventDefault();",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "event.repeat",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.screenX",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.screenY",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.shiftKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.stopPropagation()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "event.target",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "function addCssBlock(block) {\n const tpl = document.createElement('template');\n tpl.innerHTML = block;\n document.head.appendChild(tpl.content);\n}",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/AbstractUpdateImports.class"
+    },
+    {
+      "code": "history.go($0)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/History.class"
+    },
+    {
+      "code": "if (!('CSSLayerBlockRule' in window)) {\n    window.location.search='v-r=oldbrowser';\n}\n",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/IndexHtmlRequestHandler.class"
+    },
+    {
+      "code": "if (!this.value) this._inputElementValue = ''",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "if ($1 == '_self') this.stopApplication(); window.open($0, $1)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "if ('serviceWorker' in navigator) {\n  window.addEventListener('load', function() {\n    navigator.serviceWorker.register('%s')\n  });\n}",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/BootstrapHandler.class"
+    },
+    {
+      "code": "if (typeof window.__gwtStatsEvent != 'function') {window.Vaadin.Flow.gwtStatsEvents = [];window.__gwtStatsEvent = function(event) {window.Vaadin.Flow.gwtStatsEvents.push(event); return true;};};",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/BootstrapHandler.class"
+    },
+    {
+      "code": "if($0.$connector) $0.$connector.reset();",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$accessLater$18bf859d$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$accessLater$916c7f2c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$accessLater$b726409c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$add$39190493$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/nodefeature/PolymerEventListenerMap.class"
+    },
+    {
+      "code": "lambda$addAndRemove$8f93abff$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/shared/Registration.class"
+    },
+    {
+      "code": "lambda$addAttachListener$1f6411a7$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/StateNode.class"
+    },
+    {
+      "code": "lambda$addBeforeClientResponseEntry$e934cd2c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/StateNode.class"
+    },
+    {
+      "code": "lambda$addButtonClickEvent$7c90d456$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/components/wizard/buttonbar/AbstractWizardButtonBar.class"
+    },
+    {
+      "code": "lambda$addClickShortcut$681279f$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "lambda$addClickShortcut$f7e87b42$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "lambda$addColumn$17d337e2$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addColumn$4f76937c$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addColumn$63838bef$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addColumn$d8ec089a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addColumn$dc63c258$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addComponentHierarchyColumn$5d3969fd$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addContextMenuToUi$504e9d67$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "lambda$addDataGenerator$30eb0a85$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/CompositeDataGenerator.class"
+    },
+    {
+      "code": "lambda$addDetachListener$f0f78019$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/StateNode.class"
+    },
+    {
+      "code": "lambda$addDialogCloseActionListener$7b53f665$1",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "lambda$addDialogCloseActionListener$f50de17b$1",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "lambda$addDomTrigger$dd1b7957$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ComponentEventBus.class"
+    },
+    {
+      "code": "lambda$addFilter$848d4959$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$addFilter$937fe91c$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addFocusShortcut$e55a3b21$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Focusable.class"
+    },
+    {
+      "code": "lambda$addFocusShortcut$f7e87b42$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Focusable.class"
+    },
+    {
+      "code": "lambda$addGridContextMenuOpenedListener$1c3486e2$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/contextmenu/GridContextMenu.class"
+    },
+    {
+      "code": "lambda$addHierarchyColumn$2232c08a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addHierarchyColumn$63241ece$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addHierarchyColumn$c3690ee2$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addHierarchyColumn$cb98939f$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addHierarchyColumn$ff8bf86a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addItemAfter$f73746aa$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addItemBefore$f73746aa$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addItemHasChildrenPathGenerator$76c17b67$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$addItems$852ac91a$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/TreeData.class"
+    },
+    {
+      "code": "lambda$addItemsAfter$1853812e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addItemsBefore$1853812e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addListenOnDetachListeners$3d1cd3dd$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$addListener$3630f8ab$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "lambda$addListener$b0d02d54$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page$ResizeEventReceiver.class"
+    },
+    {
+      "code": "lambda$addListener$d762f844$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorImpl.class"
+    },
+    {
+      "code": "lambda$addListenerInternal$1c798b11$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ComponentEventBus.class"
+    },
+    {
+      "code": "lambda$addMenuItemClickListener$2914d5b2$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/contextmenu/GridMenuItem.class"
+    },
+    {
+      "code": "lambda$addMultiSelectionListener$1115b2a4$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel.class"
+    },
+    {
+      "code": "lambda$addPrintButton$9b1b5227$1",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "lambda$addRoutesChangeListener$12835606$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/SessionRouteRegistry.class"
+    },
+    {
+      "code": "lambda$addRoutesChangeListener$4d208e45$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/SessionRouteRegistry.class"
+    },
+    {
+      "code": "lambda$addSelectedChangeListener$de110fe0$1",
+      "origin": "vaadin-tabs-flow-24.2.0.jar:com/vaadin/flow/component/tabs/TabSheet.class"
+    },
+    {
+      "code": "lambda$addSelectionListener$1c321eb7$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/MultiSelectComboBox.class"
+    },
+    {
+      "code": "lambda$addSelectionListener$65ef8b7$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$addSelectionListener$c8df87e0$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel.class"
+    },
+    {
+      "code": "lambda$addSelectionListener$cd3e9a77$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/MultiSelectListBox.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$13bfebc0$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$31e53903$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Shortcuts.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$3c8cb6b0$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$772973ff$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Shortcuts.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$bed940aa$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Shortcuts.class"
+    },
+    {
+      "code": "lambda$addShortcutListener$f74b4007$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$addSingleSelectionListener$c08197a0$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridSingleSelectionModel.class"
+    },
+    {
+      "code": "lambda$addSortComparator$2b5c0bb$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$addSortComparator$eb181117$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/AbstractListDataView.class"
+    },
+    {
+      "code": "lambda$addStepStateChangedListener$cb41ef2c$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/components/wizard/panel/WizardPanel.class"
+    },
+    {
+      "code": "lambda$addTooltipElementToTooltipSlot$cbd1e6f0$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$15123680$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$42d17eaa$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$652da7e0$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$713d5720$1",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePicker.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$7a4e62de$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$8928857a$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$98de406a$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/TextField.class"
+    },
+    {
+      "code": "lambda$addValidationStatusChangeListener$e19fd500$1",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "lambda$addValueChangeListener$828eca10$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/AbstractFieldSupport.class"
+    },
+    {
+      "code": "lambda$addValueChangeListener$864f22c8$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridSingleSelectionModel$1.class"
+    },
+    {
+      "code": "lambda$addValueChangeListener$b4a6b7bc$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel$1.class"
+    },
+    {
+      "code": "lambda$addValueProvider$58bfd24d$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$always$f7719f5$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightConditions.class"
+    },
+    {
+      "code": "lambda$alwaysPass$a0902aca$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Validator.class"
+    },
+    {
+      "code": "lambda$and$8d106e66$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/function/SerializablePredicate.class"
+    },
+    {
+      "code": "lambda$applyConfiguration$d04e4214$1",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/TooltipConfiguration.class"
+    },
+    {
+      "code": "lambda$asRequired$19221d18$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$asRequired$30ead625$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilderImpl.class"
+    },
+    {
+      "code": "lambda$asRequired$78bb3f39$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$asRequired$c4decbc8$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilderImpl.class"
+    },
+    {
+      "code": "lambda$attachExistingElement$5e754d39$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/impl/AbstractNodeStateProvider.class"
+    },
+    {
+      "code": "lambda$attachExistingElement$d61f18b$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/impl/AbstractNodeStateProvider.class"
+    },
+    {
+      "code": "lambda$bindProperty$3cee83e1$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/webcomponent/WebComponentBinding.class"
+    },
+    {
+      "code": "lambda$build$27eb949b$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid$TreeDataCommunicatorBuilder.class"
+    },
+    {
+      "code": "lambda$build$4f3145ce$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$DataCommunicatorBuilder.class"
+    },
+    {
+      "code": "lambda$build$ef50b12a$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/column/ColumnConfigurationHeaderResolvingStrategyBuilder.class"
+    },
+    {
+      "code": "lambda$callSelectionFunctionForItems$55e59e8$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$callSelectionFunctionForItems$e4f43b37$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$callSelectionFunctionForItems$e4f43b37$2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$chain$be3ebcf2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/RequiredFieldConfigurator.class"
+    },
+    {
+      "code": "lambda$clearAllPreservedChains$e78380a8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractNavigationStateRenderer.class"
+    },
+    {
+      "code": "lambda$closeInactiveUIs$a8452f55$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$combine$938b0efe$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/shared/Registration.class"
+    },
+    {
+      "code": "lambda$combineHandlers$9909979e$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/PendingJavaScriptInvocation.class"
+    },
+    {
+      "code": "lambda$combineSortings$394193f9$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$configureRoutes$5af67ca1$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/startup/RouteRegistryInitializer.class"
+    },
+    {
+      "code": "lambda$configureWithFullTemplate$ccc9e4ad$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractRouteRegistry.class"
+    },
+    {
+      "code": "lambda$connectClient$83bb1bf7$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "lambda$connectWebComponent$b5fd5ff6$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/webcomponent/WebComponentUI.class"
+    },
+    {
+      "code": "lambda$convertToModel$255048c9$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToFloatConverter.class"
+    },
+    {
+      "code": "lambda$convertToModel$297b0757$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToLongConverter.class"
+    },
+    {
+      "code": "lambda$convertToModel$46d9ba5f$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToBigIntegerConverter.class"
+    },
+    {
+      "code": "lambda$convertToModel$6b579330$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter$2.class"
+    },
+    {
+      "code": "lambda$convertToModel$a5d9b714$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToIntegerConverter.class"
+    },
+    {
+      "code": "lambda$convertToModel$ceb9daec$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToDoubleConverter.class"
+    },
+    {
+      "code": "lambda$convertToModel$f24c4072$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToBigDecimalConverter.class"
+    },
+    {
+      "code": "lambda$createComponent$62ed155b$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/NativeButtonRenderer.class"
+    },
+    {
+      "code": "lambda$createConverter$e536042e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilderImpl.class"
+    },
+    {
+      "code": "lambda$createConverter$e536042e$2",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilderImpl.class"
+    },
+    {
+      "code": "lambda$createDataGenerator$bbb7bb69$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$createEqualsFilter$42f726e2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$createJsRendererFunction$71573036$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$createJsRendererFunction$7e58a72d$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$createJsRendererFunction$d59a1cde$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$createJsRendererFunction$f31f4741$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$createMenuManager$a63a5254$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/contextmenu/GridContextMenu.class"
+    },
+    {
+      "code": "lambda$createMenuManager$c80c444b$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/contextmenu/GridSubMenu.class"
+    },
+    {
+      "code": "lambda$createNullRepresentationAdapter$5933b59c$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder.class"
+    },
+    {
+      "code": "lambda$createNullRepresentationAdapter$a5413deb$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder.class"
+    },
+    {
+      "code": "lambda$createReader$d15de0eb$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField$TypeHandler.class"
+    },
+    {
+      "code": "lambda$createRequestHandlers$20741bb$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$createReturnValueChannel$d9004ac5$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/UidlWriter.class"
+    },
+    {
+      "code": "lambda$createSettings$a20c5f7d$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/FrontendTools.class"
+    },
+    {
+      "code": "lambda$createValueProviderFilter$1889e97$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$createWriter$db98900a$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField$TypeHandler.class"
+    },
+    {
+      "code": "lambda$deferRegistration$6c047aa5$1",
+      "origin": "vaadin-avatar-flow-24.2.0.jar:com/vaadin/flow/component/avatar/AvatarGroup$AvatarGroupItem.class"
+    },
+    {
+      "code": "lambda$disableClientValidation$b2f69d16$1",
+      "origin": "vaadin-custom-field-flow-24.2.0.jar:com/vaadin/flow/component/customfield/FieldValidationUtil.class"
+    },
+    {
+      "code": "lambda$disconnected$3ab789f8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/webcomponent/WebComponentWrapper.class"
+    },
+    {
+      "code": "lambda$doDisableOnClick$2f364bb9$1",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "lambda$editItem$2d5ea2ce$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorImpl.class"
+    },
+    {
+      "code": "lambda$editItem$b5df09ee$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorImpl.class"
+    },
+    {
+      "code": "lambda$enqueue$fa5ec831$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$UpdateQueue.class"
+    },
+    {
+      "code": "lambda$ensureAttached$7923d3bb$1",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "lambda$ensureAttached$a029f8e$1",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "lambda$executeJsWhenAttached$2aaeab21$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "lambda$executeJsWhenAttached$91990c4f$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "lambda$executeLocaleUpdate$4f2b2e34$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$failFastContextInitialized$8c9eb953$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/VaadinServletContextInitializer$RouteServletContextListener.class"
+    },
+    {
+      "code": "lambda$fetchCurrentURL$fb993594$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "lambda$fetchPageDirection$cee61900$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "lambda$filteringBy$18be9e5e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$filteringBy$8404178e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$filteringBy$9f216e4a$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$filteringByCaseInsensitiveString$49d7ac60$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$filteringByIgnoreNull$7ae094c$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$filteringByPrefix$21a8cf32$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$filteringBySubstring$21a8cf32$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProvider.class"
+    },
+    {
+      "code": "lambda$fireEventForListener$5348c5d0$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ComponentEventBus.class"
+    },
+    {
+      "code": "lambda$fireSessionDestroy$20ed7015$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$fireSessionDestroy$9c853e43$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$flush$81100e9d$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$forElement$244d52fa$1",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/Tooltip.class"
+    },
+    {
+      "code": "lambda$forElement$4594f9c1$1",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/Tooltip.class"
+    },
+    {
+      "code": "lambda$forElement$709abcf2$1",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/Tooltip.class"
+    },
+    {
+      "code": "lambda$from$8f657b75$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Validator.class"
+    },
+    {
+      "code": "lambda$from$957be2b0$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter.class"
+    },
+    {
+      "code": "lambda$from$9e33c5f5$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Validator.class"
+    },
+    {
+      "code": "lambda$from$b652e465$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter.class"
+    },
+    {
+      "code": "lambda$from$e70376e5$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Validator.class"
+    },
+    {
+      "code": "lambda$fromPagingRepository$74fad42f$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/data/VaadinSpringDataHelpers.class"
+    },
+    {
+      "code": "lambda$generate$2f364bb9$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemsArrayGenerator.class"
+    },
+    {
+      "code": "lambda$getBeanStore$b500751e$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/scopes/VaadinRouteScope$RouteStoreWrapper.class"
+    },
+    {
+      "code": "lambda$getBeanStore$f1de397f$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/scopes/VaadinRouteScope$RouteStoreWrapper.class"
+    },
+    {
+      "code": "lambda$getBootstrapInitialPredicate$edd43c46$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$getBootstrapUrlPredicate$6d79b65c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$getDataGenerator$96b60bbc$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ColumnPathRenderer$SingleValueProviderRendering.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$19e6c022$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$31eecc81$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$50576651$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$8823260a$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/AbstractNumberField.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$b7075ecf$1",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePicker.class"
+    },
+    {
+      "code": "lambda$getDefaultValidator$cbaf550b$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/TextField.class"
+    },
+    {
+      "code": "lambda$getDependencyInfo$966b0ff7$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/ComponentMetaData.class"
+    },
+    {
+      "code": "lambda$getFilter$27da2c5f$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase$1.class"
+    },
+    {
+      "code": "lambda$getFilter$37c88073$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup$1.class"
+    },
+    {
+      "code": "lambda$getFilter$925c13f0$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController$2.class"
+    },
+    {
+      "code": "lambda$getFilter$925c13f0$2",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController$2.class"
+    },
+    {
+      "code": "lambda$getGetter$3ec26976$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/BeanPropertySet$BeanPropertyDefinition.class"
+    },
+    {
+      "code": "lambda$getHandler$2a90141$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$getHandler$ff29eb77$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$getItem$2b7b70ee$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/WebStorage.class"
+    },
+    {
+      "code": "lambda$getListDataView$7b7141c6$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase.class"
+    },
+    {
+      "code": "lambda$getListDataView$7cb32e1e$1",
+      "origin": "vaadin-radio-button-flow-24.2.0.jar:com/vaadin/flow/component/radiobutton/RadioButtonGroup.class"
+    },
+    {
+      "code": "lambda$getListDataView$cc704566$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$getListDataView$f5344920$1",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "lambda$getLocalClassName$bf9191aa$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$getOrInitListenData$c2c2421d$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$getPreservedChain$cdbeaece$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractNavigationStateRenderer.class"
+    },
+    {
+      "code": "lambda$getRegistration$c3b9fcb4$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/Rendering.class"
+    },
+    {
+      "code": "lambda$getSetter$b8f754c2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/BeanPropertySet$BeanPropertyDefinition.class"
+    },
+    {
+      "code": "lambda$getSuggestedClassName$bf9191aa$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$getTag$bf9191aa$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$handleAttach$425c8a01$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$handleDataProviderChange$78e8296$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$identity$5ea35b43$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/function/SerializableFunction.class"
+    },
+    {
+      "code": "lambda$identity$6021f9bd$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter.class"
+    },
+    {
+      "code": "lambda$identity$6021f9bd$2",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/Converter.class"
+    },
+    {
+      "code": "lambda$identity$ea79ee75$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/IdentifierProvider.class"
+    },
+    {
+      "code": "lambda$identity$f7a189f8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/function/ValueProvider.class"
+    },
+    {
+      "code": "lambda$ifError$cdb0a093$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Result.class"
+    },
+    {
+      "code": "lambda$ifOk$eebf47ee$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Result.class"
+    },
+    {
+      "code": "lambda$init$1b1c0da0$1",
+      "origin": "vaadin-field-highlighter-flow-24.2.0.jar:com/vaadin/flow/component/fieldhighlighter/FieldHighlighterInitializer.class"
+    },
+    {
+      "code": "lambda$init$1bc33a08$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/PwaHandler.class"
+    },
+    {
+      "code": "lambda$init$332dc31c$1",
+      "origin": "vaadin-field-highlighter-flow-24.2.0.jar:com/vaadin/flow/component/fieldhighlighter/FieldHighlighterInitializer.class"
+    },
+    {
+      "code": "lambda$init$d066c0ae$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/stats/DevModeUsageStatistics.class"
+    },
+    {
+      "code": "lambda$init$eafcb6e4$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/PwaHandler.class"
+    },
+    {
+      "code": "lambda$init$eafcb6e4$2",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/PwaHandler.class"
+    },
+    {
+      "code": "lambda$init$eafcb6e4$3",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/PwaHandler.class"
+    },
+    {
+      "code": "lambda$initBaseElementsAndListeners$aa821371$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$initBaseElementsAndListeners$c53a20e4$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$initConnector$2f364bb9$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$initDisableOnClick$2f364bb9$1",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "lambda$initDisableOnClick$2f364bb9$2",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "lambda$initEnsureDetachListener$c53a20e4$1",
+      "origin": "vaadin-login-flow-24.2.0.jar:com/vaadin/flow/component/login/LoginOverlay.class"
+    },
+    {
+      "code": "lambda$initErrorTargets$c7faff5$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/startup/ApplicationRouteRegistry.class"
+    },
+    {
+      "code": "lambda$initFieldValue$ecaac63$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingImpl.class"
+    },
+    {
+      "code": "lambda$initUI$3fab9f70$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$3fed5817$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$3fed5817$2",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$4331e5de$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$434ebf9d$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$d3ab68e4$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$initUI$e74a5586$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/jasper/config/encoding/EncodingConfigComponent.class"
+    },
+    {
+      "code": "lambda$initUIs$e74a5586$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/jasper/config/page/PageConfigComponent.class"
+    },
+    {
+      "code": "lambda$initialize$b993c304$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/startup/RouteRegistryInitializer.class"
+    },
+    {
+      "code": "lambda$initializeDevModeClassCache$2f364bb9$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/VaadinServletContextInitializer.class"
+    },
+    {
+      "code": "lambda$initializeUI$9a916791$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/Router.class"
+    },
+    {
+      "code": "lambda$isAccessible$fbd0bd98$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$listenOn$71101f38$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$locationPrefix$a9c99c3$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightConditions.class"
+    },
+    {
+      "code": "lambda$locationPrefix$d6534eff$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightConditions.class"
+    },
+    {
+      "code": "lambda$logout$7e8b7cde$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/security/AuthenticationContext.class"
+    },
+    {
+      "code": "lambda$map$f6512718$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Result.class"
+    },
+    {
+      "code": "lambda$negate$ce21e1a0$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/function/SerializablePredicate.class"
+    },
+    {
+      "code": "lambda$never$f7719f5$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightConditions.class"
+    },
+    {
+      "code": "lambda$new$10c0f072$1",
+      "origin": "vaadin-radio-button-flow-24.2.0.jar:com/vaadin/flow/component/radiobutton/RadioButtonGroup.class"
+    },
+    {
+      "code": "lambda$new$11c889fe$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LocalDateTimeRenderer.class"
+    },
+    {
+      "code": "lambda$new$1608129d$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$new$1f05f1da$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$new$23129cbe$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$new$27439f07$1",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "lambda$new$2f364bb9$1",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "lambda$new$30b36f48$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LocalDateRenderer.class"
+    },
+    {
+      "code": "lambda$new$31087998$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/PushRequestHandler.class"
+    },
+    {
+      "code": "lambda$new$31e4907$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$new$360380dc$1",
+      "origin": "vaadin-custom-field-flow-24.2.0.jar:com/vaadin/flow/component/customfield/CustomField.class"
+    },
+    {
+      "code": "lambda$new$36c2510a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/HierarchyColumnComponentRenderer.class"
+    },
+    {
+      "code": "lambda$new$375bd740$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$new$39443434$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/SpringVaadinServletService.class"
+    },
+    {
+      "code": "lambda$new$3a59bec5$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/AbstractStringToNumberConverter.class"
+    },
+    {
+      "code": "lambda$new$3d66ad05$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$new$3f9e7b63$1",
+      "origin": "so-helper-3.0.0.jar:com/storedobject/helper/LitComponent$JSResult.class"
+    },
+    {
+      "code": "lambda$new$3fab9f70$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$new$40604eac$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$new$44ddc631$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/TextField.class"
+    },
+    {
+      "code": "lambda$new$46f190a3$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/DefaultConverterFactory.class"
+    },
+    {
+      "code": "lambda$new$46f190a3$2",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/DefaultConverterFactory.class"
+    },
+    {
+      "code": "lambda$new$49017ed5$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$new$4bd58a8b$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$new$52860969$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/MultiSelectComboBox.class"
+    },
+    {
+      "code": "lambda$new$538b5e3b$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LocalDateTimeRenderer.class"
+    },
+    {
+      "code": "lambda$new$5532cf2e$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToBooleanConverter.class"
+    },
+    {
+      "code": "lambda$new$553b070$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "lambda$new$57b2cb29$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBox.class"
+    },
+    {
+      "code": "lambda$new$5b7e970d$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$new$5c641bf3$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$new$624cca9a$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/StringToUuidConverter.class"
+    },
+    {
+      "code": "lambda$new$6734e865$1",
+      "origin": "vaadin-virtual-list-flow-24.2.0.jar:com/vaadin/flow/component/virtuallist/VirtualList.class"
+    },
+    {
+      "code": "lambda$new$6ce9892d$1",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePicker.class"
+    },
+    {
+      "code": "lambda$new$713de11a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/HierarchyColumnComponentRenderer.class"
+    },
+    {
+      "code": "lambda$new$73505cc7$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$new$73c563fa$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/TextField.class"
+    },
+    {
+      "code": "lambda$new$76f1ff5c$1",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "lambda$new$77851ea7$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$new$77daf3fe$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/MultiSelectComboBox.class"
+    },
+    {
+      "code": "lambda$new$7d59d50b$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/BasicRenderer.class"
+    },
+    {
+      "code": "lambda$new$7e33c1be$1",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout.class"
+    },
+    {
+      "code": "lambda$new$87cdf6d1$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/ThemeLiveUpdater.class"
+    },
+    {
+      "code": "lambda$new$8d288916$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$new$8d37c367$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/NativeButtonRenderer.class"
+    },
+    {
+      "code": "lambda$new$8d981eb2$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$new$91157c02$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/NativeButtonRenderer.class"
+    },
+    {
+      "code": "lambda$new$929802a0$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$new$97ff97a6$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$new$9a735d98$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "lambda$new$9a735d98$2",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "lambda$new$9b1b5227$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$new$9b1b5227$2",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout.class"
+    },
+    {
+      "code": "lambda$new$9bae2ea6$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemsArrayGenerator.class"
+    },
+    {
+      "code": "lambda$new$9d76ce4f$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "lambda$new$a4a1fe4f$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/scopes/VaadinUIScope$UIStoreWrapper.class"
+    },
+    {
+      "code": "lambda$new$a4a1fe4f$2",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/scopes/VaadinUIScope$UIStoreWrapper.class"
+    },
+    {
+      "code": "lambda$new$a7cbe3fd$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/AbstractNumberField.class"
+    },
+    {
+      "code": "lambda$new$a860f8c6$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/AbstractNumberField.class"
+    },
+    {
+      "code": "lambda$new$aa19e6f3$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingImpl.class"
+    },
+    {
+      "code": "lambda$new$aa821371$1",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "lambda$new$aa821371$2",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "lambda$new$aa821371$3",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "lambda$new$b319f9f6$1",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePicker.class"
+    },
+    {
+      "code": "lambda$new$b7805670$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/CallbackDataProvider.class"
+    },
+    {
+      "code": "lambda$new$b84af9cd$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "lambda$new$ba6e7b7d$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/KeyMapper.class"
+    },
+    {
+      "code": "lambda$new$c0c6e8bb$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$new$c0c6e8bb$2",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$new$c3821a66$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$new$c53a20e4$1",
+      "origin": "vaadin-details-flow-24.2.0.jar:com/vaadin/flow/component/details/Details.class"
+    },
+    {
+      "code": "lambda$new$c53a20e4$2",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "lambda$new$c751c664$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/validator/AbstractValidator.class"
+    },
+    {
+      "code": "lambda$new$caef78cd$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$new$cdfd067f$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractGridMultiSelectionModel.class"
+    },
+    {
+      "code": "lambda$new$d282c4e3$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField$TypeHandler.class"
+    },
+    {
+      "code": "lambda$new$d40ccd51$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LocalDateRenderer.class"
+    },
+    {
+      "code": "lambda$new$d4e8b2c8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/JavaScriptBootstrapHandler.class"
+    },
+    {
+      "code": "lambda$new$da8fd276$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/SpringVaadinServletService.class"
+    },
+    {
+      "code": "lambda$new$e14a6c54$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/NativeButtonRenderer.class"
+    },
+    {
+      "code": "lambda$new$e38dae27$1",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "lambda$new$e4b01e41$1",
+      "origin": "flow-lit-template-24.2.0.jar:com/vaadin/flow/component/littemplate/LitTemplateInitializer.class"
+    },
+    {
+      "code": "lambda$new$e827af66$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$new$eba53d0$1",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "lambda$new$f52f2a26$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase.class"
+    },
+    {
+      "code": "lambda$new$f58d45ee$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$new$f9b94f89$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingImpl.class"
+    },
+    {
+      "code": "lambda$new$fe1151bc$1",
+      "origin": "so-helper-3.0.0.jar:com/storedobject/helper/LitComponent$JSResult.class"
+    },
+    {
+      "code": "lambda$new$fe63063f$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "lambda$none$10d3a0f$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightActions.class"
+    },
+    {
+      "code": "lambda$notifyBindingValidationStatusHandlers$6aa565a$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/BinderValidationStatus.class"
+    },
+    {
+      "code": "lambda$onAttach$2d42d1e0$1",
+      "origin": "vaadin-tabs-flow-24.2.0.jar:com/vaadin/flow/component/tabs/Tabs.class"
+    },
+    {
+      "code": "lambda$onAttach$46906e72$1",
+      "origin": "flow-html-components-24.2.0.jar:com/vaadin/flow/component/html/Label.class"
+    },
+    {
+      "code": "lambda$onChange$eb058747$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/webcomponent/PropertyConfigurationImpl.class"
+    },
+    {
+      "code": "lambda$onDataProviderChange$46f190a3$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$onDetach$87669de4$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$onEnterStep$802dce81$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/GeneralStep.class"
+    },
+    {
+      "code": "lambda$onEnterStep$d2d2b6c5$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/PreviewStep.class"
+    },
+    {
+      "code": "lambda$onMessage$599dae22$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/DebugWindowConnection.class"
+    },
+    {
+      "code": "lambda$or$8d106e66$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/function/SerializablePredicate.class"
+    },
+    {
+      "code": "lambda$propertyComparator$a6f2bd59$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$read$cc697a3e$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/stats/StatisticsStorage.class"
+    },
+    {
+      "code": "lambda$rebuild$2f364bb9$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase.class"
+    },
+    {
+      "code": "lambda$recalculateColumnWidths$2f364bb9$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$recalculateColumnWidths$2f364bb9$2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$register$43f5e0c7$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator$FlushRequest.class"
+    },
+    {
+      "code": "lambda$registerBindings$3fab9f70$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/jasper/config/encoding/EncodingConfigComponent.class"
+    },
+    {
+      "code": "lambda$registerChannel$2a20409b$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/nodefeature/ReturnChannelMap.class"
+    },
+    {
+      "code": "lambda$registerConverterWithMessageProvider$7d5699$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/DefaultConverterFactory.class"
+    },
+    {
+      "code": "lambda$registerConverterWithMessageProvider$b65e9b$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/converter/DefaultConverterFactory.class"
+    },
+    {
+      "code": "lambda$registerDetachListenerForPendingInvocation$543184d2$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "lambda$registerDetachListenerForPendingInvocation$b12ef46$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "lambda$registerLifecycleOwner$5cee816b$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$registerLifecycleOwner$787b9bf9$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$registerListeners$3fab9f70$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/steps/FormatStep.class"
+    },
+    {
+      "code": "lambda$registerListeners$9b1b5227$1",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/GridExporterWizard.class"
+    },
+    {
+      "code": "lambda$registerListeners$9b1b5227$2",
+      "origin": "vaadin-grid-exporter-3.0.3.jar:software/xdev/vaadin/grid_exporter/wizard/GridExporterWizard.class"
+    },
+    {
+      "code": "lambda$registerOwnerListeners$18e46ebe$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$registerOwnerListeners$9393ccc7$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$removeClosedUIs$20ed7015$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/VaadinService.class"
+    },
+    {
+      "code": "lambda$removeLocalClassName$d86b5a9a$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$removeRoute$87dd9b94$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractRouteRegistry.class"
+    },
+    {
+      "code": "lambda$removeRoute$c4946eb4$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractRouteRegistry.class"
+    },
+    {
+      "code": "lambda$removeRoute$d72cf7e5$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractRouteRegistry.class"
+    },
+    {
+      "code": "lambda$render$7cff7e1f$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorRenderer.class"
+    },
+    {
+      "code": "lambda$render$bd776f7f$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/ComponentRenderer.class"
+    },
+    {
+      "code": "lambda$render$fe96490a$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorRenderer.class"
+    },
+    {
+      "code": "lambda$render$fe96490a$2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorRenderer.class"
+    },
+    {
+      "code": "lambda$requestClientSideContentUpdateIfNotPending$2f364bb9$1",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "lambda$requestFlush$6b766ee6$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestFlush$7258256f$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestFlush$e15592a2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestFlush$f05daf59$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestFlush$fabb72ba$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestFlushUpdatedData$2f364bb9$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$requestI18nUpdate$2f364bb9$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$requestLocaleUpdate$2f364bb9$1",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "lambda$requestStylesUpdatesForSplitterPosition$abed4803$1",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout.class"
+    },
+    {
+      "code": "lambda$reset$2f364bb9$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$retrieveExtendedClientDetails$c99f6446$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "lambda$retrieveExtendedClientDetails$fc941a8c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "lambda$runBeforeClientResponse$34f88668$1",
+      "origin": "vaadin-virtual-list-flow-24.2.0.jar:com/vaadin/flow/component/virtuallist/VirtualList.class"
+    },
+    {
+      "code": "lambda$runBeforeClientResponse$34f88668$2",
+      "origin": "vaadin-virtual-list-flow-24.2.0.jar:com/vaadin/flow/component/virtuallist/VirtualList.class"
+    },
+    {
+      "code": "lambda$runBeforeClientResponse$ae1dc3b6$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/editor/EditorRenderer.class"
+    },
+    {
+      "code": "lambda$runBeforeClientResponse$bf942494$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$runBeforeClientResponse$ffcaae26$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$runFrontendBuildTool$1b9720f3$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/TaskRunDevBundleBuild.class"
+    },
+    {
+      "code": "lambda$runNpmInstall$2d683f37$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/TaskRunNpmInstall.class"
+    },
+    {
+      "code": "lambda$runOnAttachBeforeResponse$a2771927$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "lambda$runOnAttachBeforeResponse$f1337167$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "lambda$sameLocation$d6534eff$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightConditions.class"
+    },
+    {
+      "code": "lambda$scheduleFooterRendering$2f364bb9$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "lambda$scheduleFooterRendering$2f364bb9$2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "lambda$scheduleHeaderRendering$2f364bb9$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "lambda$scheduleHeaderRendering$2f364bb9$2",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "lambda$scheduleItemsUpdate$2f364bb9$1",
+      "origin": "vaadin-messages-flow-24.2.0.jar:com/vaadin/flow/component/messages/MessageList.class"
+    },
+    {
+      "code": "lambda$scheduleItemsUpdate$504e9d67$1",
+      "origin": "vaadin-messages-flow-24.2.0.jar:com/vaadin/flow/component/messages/MessageList.class"
+    },
+    {
+      "code": "lambda$scheduleJavaScriptInvocation$9c7dc614$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/Element.class"
+    },
+    {
+      "code": "lambda$scheduleJavaScriptInvocation$ae8cf6b9$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/Element.class"
+    },
+    {
+      "code": "lambda$scheduleRender$2f364bb9$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxRenderManager.class"
+    },
+    {
+      "code": "lambda$scrollToEnd$2f364bb9$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$scrollToIndex$8ffed220$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "lambda$serviceInit$f9ee024b$1",
+      "origin": "vaadin-spring-24.2.0.jar:com/vaadin/flow/spring/security/ViewAccessCheckerInitializer.class"
+    },
+    {
+      "code": "lambda$setChildModal$3a1fa979$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "lambda$setChildModal$a7b2f47$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/internal/UIInternals.class"
+    },
+    {
+      "code": "lambda$setClientItems$2f364bb9$1",
+      "origin": "vaadin-avatar-flow-24.2.0.jar:com/vaadin/flow/component/avatar/AvatarGroup.class"
+    },
+    {
+      "code": "lambda$setClientItems$2f364bb9$2",
+      "origin": "vaadin-avatar-flow-24.2.0.jar:com/vaadin/flow/component/avatar/AvatarGroup.class"
+    },
+    {
+      "code": "lambda$setContentType$23015cd3$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/StreamResource.class"
+    },
+    {
+      "code": "lambda$setDataProvider$13e91f97$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$2f5d6c5e$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$3498cdec$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$setDataProvider$353ca844$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$59af6a79$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$5b9a5fe6$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataCommunicator.class"
+    },
+    {
+      "code": "lambda$setDataProvider$78e8296$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "lambda$setDataProvider$7e502bce$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$986c235e$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$9fbb9d72$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$a573f30$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDataProvider$d85e4896$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setDraggable$8ecd5ff$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DragSource.class"
+    },
+    {
+      "code": "lambda$setDraggable$ade1cf66$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DragSource.class"
+    },
+    {
+      "code": "lambda$setEditorComponent$490b8663$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$setI18n$2bf4be43$1",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "lambda$setI18n$6bb86b45$1",
+      "origin": "vaadin-app-layout-flow-24.2.0.jar:com/vaadin/flow/component/applayout/AppLayout.class"
+    },
+    {
+      "code": "lambda$setI18n$7019394f$1",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "lambda$setItemDetailsRenderer$b87a225$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "lambda$setItems$66b72d37$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/HasLazyDataView.class"
+    },
+    {
+      "code": "lambda$setItemsWithFilterConverter$d6b1c85d$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$setLocalClassName$25aa656f$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/themeeditor/JavaSourceModifier.class"
+    },
+    {
+      "code": "lambda$setOpened$47fd45c4$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$setOpened$57bd88f1$1",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "lambda$setParentRequestedRange$3f83e7e5$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$setParentRequestedRange$40c6ed6c$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/hierarchy/HierarchicalDataCommunicator.class"
+    },
+    {
+      "code": "lambda$setPlaceholderItem$caa9877f$1",
+      "origin": "vaadin-virtual-list-flow-24.2.0.jar:com/vaadin/flow/component/virtuallist/VirtualList.class"
+    },
+    {
+      "code": "lambda$setPreservedChain$48221dc9$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractNavigationStateRenderer.class"
+    },
+    {
+      "code": "lambda$setRoute$2df6994$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractRouteRegistry.class"
+    },
+    {
+      "code": "lambda$setShortcutListenOnElement$d14b08d8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Shortcuts.class"
+    },
+    {
+      "code": "lambda$setSortProperty$ffbe72c8$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid$Column.class"
+    },
+    {
+      "code": "lambda$setTarget$9bae2ea6$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "lambda$setTarget$e8bda0a2$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "lambda$setTarget$f440af50$1",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "lambda$setTooltipText$a076a11$1",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "lambda$setupDataProviderListener$14261d3b$1",
+      "origin": "vaadin-list-box-flow-24.2.0.jar:com/vaadin/flow/component/listbox/ListBoxBase.class"
+    },
+    {
+      "code": "lambda$setupDataProviderListener$78e8296$1",
+      "origin": "vaadin-radio-button-flow-24.2.0.jar:com/vaadin/flow/component/radiobutton/RadioButtonGroup.class"
+    },
+    {
+      "code": "lambda$setupDataProviderListener$94e23d3c$1",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxDataController.class"
+    },
+    {
+      "code": "lambda$startUpdate$25eb9d39$1",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid$TreeGridArrayUpdaterImpl.class"
+    },
+    {
+      "code": "lambda$static$23a28407$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$static$29f0bc2a$1",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "lambda$static$300e962e$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "lambda$static$382e0a69$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/RequiredFieldConfigurator.class"
+    },
+    {
+      "code": "lambda$static$460eb7c0$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$static$6cd91215$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/InMemoryDataProviderHelpers.class"
+    },
+    {
+      "code": "lambda$static$6ee9473b$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/RequiredFieldConfigurator.class"
+    },
+    {
+      "code": "lambda$static$7f8f80fb$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/Element.class"
+    },
+    {
+      "code": "lambda$static$bdc8dc3d$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/RequiredFieldConfigurator.class"
+    },
+    {
+      "code": "lambda$static$be4524a3$1",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "lambda$static$dcfc92b8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Component.class"
+    },
+    {
+      "code": "lambda$static$dfce88e2$1",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/Checkbox.class"
+    },
+    {
+      "code": "lambda$static$e262e1f8$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/AbstractSinglePropertyField.class"
+    },
+    {
+      "code": "lambda$then$3fde283c$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/PendingJavaScriptResult.class"
+    },
+    {
+      "code": "lambda$toCompletableFuture$2a8b1fec$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/PendingJavaScriptResult.class"
+    },
+    {
+      "code": "lambda$toCompletableFuture$e8c116a1$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/PendingJavaScriptResult.class"
+    },
+    {
+      "code": "lambda$toggleAttribute$39ea592d$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightActions.class"
+    },
+    {
+      "code": "lambda$toggleClassName$6242763b$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightActions.class"
+    },
+    {
+      "code": "lambda$toggleTheme$18068a20$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/HighlightActions.class"
+    },
+    {
+      "code": "lambda$update$f902d37c$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/stats/StatisticsStorage.class"
+    },
+    {
+      "code": "lambda$updateButtons$2f364bb9$1",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "lambda$updateDragSourceActivation$1ec9b921$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "lambda$updateDropTargetActivation$33d80570$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "lambda$updateDropTargetActivation$7157ca2a$1",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "lambda$updateHandlerListenerRegistration$89e5c563$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ShortcutRegistration.class"
+    },
+    {
+      "code": "lambda$updateRouteRegistry$5da1e25f$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/RouteUtil.class"
+    },
+    {
+      "code": "lambda$watchAndCopy$1a23d9b4$1",
+      "origin": "vaadin-dev-server-24.2.0.jar:com/vaadin/base/devserver/ExternalDependencyWatcher.class"
+    },
+    {
+      "code": "lambda$withConfigurableFilter$4a5cac28$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/provider/DataProvider.class"
+    },
+    {
+      "code": "lambda$withConverter$f6c9c8b2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$withFunction$71d1d723$1",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "lambda$withNullRepresentation$ad0218b0$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$withNullRepresentation$ad0218b0$2",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$withStatusLabel$1345c8b6$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilder.class"
+    },
+    {
+      "code": "lambda$withValidator$52ac0ffc$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder.class"
+    },
+    {
+      "code": "lambda$withValidator$7d13c2a2$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingBuilderImpl.class"
+    },
+    {
+      "code": "lambda$wrapValueProvider$d0062d93$1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/ReflectionCache.class"
+    },
+    {
+      "code": "lambda$writeFieldValue$5169480d$1",
+      "origin": "flow-data-24.2.0.jar:com/vaadin/flow/data/binder/Binder$BindingImpl.class"
+    },
+    {
+      "code": "printPdf.printPdf($0)",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "return Vaadin.Flow.getBrowserDetailsParameters();",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "return document.dir",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "return window.location.href",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "return window[$0].getItem($1);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/WebStorage.class"
+    },
+    {
+      "code": "setTimeout(() => { window.history.pushState($0, '', $1); window.dispatchEvent(new PopStateEvent('popstate', {state: 'vaadin-router-ignore'})); })",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/History.class"
+    },
+    {
+      "code": "setTimeout(() => { window.history.replaceState($0, '', $1); window.dispatchEvent(new PopStateEvent('popstate', {state: 'vaadin-router-ignore'})); })",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/History.class"
+    },
+    {
+      "code": "setTimeout(function(){$0.focus()},0)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/Focusable.class"
+    },
+    {
+      "code": "this.$.overlay",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.$.overlay.$.overlay.style[$0]=$1",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.$connector.generateItems()",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "this.$connector.setFooterRenderer($0, { content: $1 })",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "this.$connector.setHeaderRenderer($0, { content: $1, showSorter: $2, sorterPath: $3 })",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "this.$server['}p']($0, false)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/rpc/PublishedServerEventHandlerRpcHandler.class"
+    },
+    {
+      "code": "this.$server['}p']($0, true, $1)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/rpc/PublishedServerEventHandlerRpcHandler.class"
+    },
+    {
+      "code": "this.__closeSidebar()",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this.__openSidebar()",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this._contentHeight = $0",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._contentWidth = $0",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._inputElementValue = $0",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBox.class"
+    },
+    {
+      "code": "this._inputElementValue = ''",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "this._inputElementValue = this.value",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "this._overlayElement",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._shouldSetInvalid = function (invalid) { return false };",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/ClientValidationUtil.class"
+    },
+    {
+      "code": "this._updateOrders(this._columnTree, null)",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/GridColumnOrderHelper.class"
+    },
+    {
+      "code": "this._updatePropertyFromServer($0, $1);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/webcomponent/WebComponent.class"
+    },
+    {
+      "code": "this._updatePropertyFromServer($0, null);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/webcomponent/WebComponent.class"
+    },
+    {
+      "code": "this.attachExistingElement($0, $1, $2, $3);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/impl/AbstractNodeStateProvider.class"
+    },
+    {
+      "code": "this.disabled = $0",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "this.fire($0, $1, $2, $3)",
+      "origin": "ckeditor-vaadin-4.0.0.jar:com/wontlost/ckeditor/VaadinCKEditor.class"
+    },
+    {
+      "code": "this.generator = ({item, column}) => { return (item && item.gridtooltips && column) ? item.gridtooltips[column._flowId] ?? item.gridtooltips['row'] : ''; }",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "this.generator = ({item}) => { return (item && item.component) ? item.component.tooltip : ''; }",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "this.i18n = Object.assign({}, this.i18n, $0);",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/MultiSelectComboBox.class"
+    },
+    {
+      "code": "this.inputElement.removeAttribute($0)",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/Checkbox.class"
+    },
+    {
+      "code": "this.inputElement.setAttribute($0, $1)",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/Checkbox.class"
+    },
+    {
+      "code": "this.inputElement.value = ''",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePickerDatePicker.class"
+    },
+    {
+      "code": "this.invalid = true;",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/ClientValidationUtil.class"
+    },
+    {
+      "code": "this.renderer = (root) => Vaadin.FlowComponentHost.setChildNodes($0, this.virtualChildNodeIds, root)",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.renderer = (root) => {  if (this.text) {    root.textContent = this.text;  } else {    Vaadin.FlowComponentHost.setChildNodes($0, this.virtualChildNodeIds, root)  }}",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "this.scrollPositionHandlerAfterServerNavigation($0);",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/router/internal/AbstractNavigationStateRenderer.class"
+    },
+    {
+      "code": "this.scrollToIndex(...Array(10).fill(Infinity))",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "this.scrollToIndex(this._effectiveSize)",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "this.serverConnected($0)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "this.serverPaused()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "this.setCurrentPage($0)",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this.src = this.src",
+      "origin": "flow-html-components-24.2.0.jar:com/vaadin/flow/component/html/IFrame.class"
+    },
+    {
+      "code": "this.target = $0;",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/Tooltip.class"
+    },
+    {
+      "code": "this.updateData($0, $1)",
+      "origin": "ckeditor-vaadin-4.0.0.jar:com/wontlost/ckeditor/VaadinCKEditor.class"
+    },
+    {
+      "code": "this.validate = function () {return this.checkValidity();};",
+      "origin": "vaadin-custom-field-flow-24.2.0.jar:com/vaadin/flow/component/customfield/FieldValidationUtil.class"
+    },
+    {
+      "code": "typeof(event.key) === 'string' && event.key.length > 0",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "var bootstrapped = false;\nbootstrapAddress+='?url='+bootstrapAddress;var scripts = document.getElementsByTagName('script');for (var ii = 0; ii < scripts.length; ii++){  if (scripts[ii].src === bootstrapAddress){    bootstrapped=true; break;  }}if (!bootstrapped){  var uiScript = document.createElement('script');  uiScript.setAttribute('type','text/javascript');  uiScript.setAttribute('src', bootstrapAddress);  document.head.appendChild(uiScript);}",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/WebComponentProvider.class"
+    },
+    {
+      "code": "var element = this.children[$0]; if (element) { element.style[$1]=$2; }",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout.class"
+    },
+    {
+      "code": "window.JSCompiler_renameProperty = function(a) { return a; }",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/WebComponentBootstrapHandler$WebComponentBootstrapPageBuilder.class"
+    },
+    {
+      "code": "window.Vaadin = window.Vaadin || {};",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/AbstractUpdateImports.class"
+    },
+    {
+      "code": "window.Vaadin = window.Vaadin || {};\nwindow.Vaadin.developmentMode = true;\nwindow.Vaadin.devToolsPlugins = [];\n",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/IndexHtmlRequestHandler.class"
+    },
+    {
+      "code": "window.Vaadin = window.Vaadin || {};window.Vaadin.ConsoleErrors = window.Vaadin.ConsoleErrors || [];const browserConsoleError = window.console.error.bind(window.console);console.error = (...args) => {    browserConsoleError(...args);    window.Vaadin.ConsoleErrors.push(args);};window.onerror = (message, source, lineno, colno, error) => {const location=source+':'+lineno+':'+colno;window.Vaadin.ConsoleErrors.push([message, '('+location+')']);};window.addEventListener('unhandledrejection', e => {    window.Vaadin.ConsoleErrors.push([e.reason]);});",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/IndexHtmlRequestHandler.class"
+    },
+    {
+      "code": "window.Vaadin = window.Vaadin || {};window.Vaadin.VaadinLicenseChecker = {  maybeCheck: (productInfo) => {  }};window.Vaadin.devTools = window.Vaadin.devTools || {};window.Vaadin.devTools.createdCvdlElements = window.Vaadin.devTools.createdCvdlElements || [];window.Vaadin.originalCustomElementDefineFn = window.Vaadin.originalCustomElementDefineFn || window.customElements.define;window.customElements.define = function (tagName, constructor, ...args) {const { cvdlName, version } = constructor;if (cvdlName && version) {  const { connectedCallback } = constructor.prototype;  constructor.prototype.connectedCallback = function () {    window.Vaadin.devTools.createdCvdlElements.push(this);    if (connectedCallback) {      connectedCallback.call(this);    }  }}window.Vaadin.originalCustomElementDefineFn.call(this, tagName, constructor, ...args);};",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/IndexHtmlRequestHandler.class"
+    },
+    {
+      "code": "window.Vaadin.Flow = window.Vaadin.Flow || {};",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/AbstractUpdateImports.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.button.initDisableOnClick($0)",
+      "origin": "vaadin-button-flow-24.2.0.jar:com/vaadin/flow/component/button/Button.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.comboBoxConnector.initLazy(this)",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBoxBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.contextMenuConnector.initLazy(this, $0)",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.contextMenuConnector.setChecked($0, $1)",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.contextMenuConnector.setKeepOpen($0, $1)",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.contextMenuConnector.setTheme($0, $1)",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/MenuItemBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.contextMenuTargetConnector.init(this);this.$contextMenuTargetConnector.updateOpenOn($0);",
+      "origin": "vaadin-context-menu-flow-24.2.0.jar:com/vaadin/flow/component/contextmenu/ContextMenuBase.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.datepickerConnector.initLazy($0)",
+      "origin": "vaadin-date-picker-flow-24.2.0.jar:com/vaadin/flow/component/datepicker/DatePicker.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.dndConnector.updateDragSource($0)",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.dndConnector.updateDropTarget($0)",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/internal/DndUtil.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.gridConnector.initLazy($0)",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.loadOnDemand = loadOnDemand;",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/AbstractUpdateImports.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.menubarConnector.initLazy(this, $0)",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.messageListConnector.setItems(this, $0, $1)",
+      "origin": "vaadin-messages-flow-24.2.0.jar:com/vaadin/flow/component/messages/MessageList.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.selectConnector.initLazy($0)",
+      "origin": "vaadin-select-flow-24.2.0.jar:com/vaadin/flow/component/select/Select.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.timepickerConnector.initLazy($0)",
+      "origin": "vaadin-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/timepicker/TimePicker.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.tooltip.setDefaultFocusDelay($0)",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/TooltipConfiguration.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.tooltip.setDefaultHideDelay($0)",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/TooltipConfiguration.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.tooltip.setDefaultHoverDelay($0)",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/TooltipConfiguration.class"
+    },
+    {
+      "code": "window.Vaadin.Flow.virtualListConnector.initLazy($0)",
+      "origin": "vaadin-virtual-list-flow-24.2.0.jar:com/vaadin/flow/component/virtuallist/VirtualList.class"
+    },
+    {
+      "code": "window.Vaadin.featureFlags = window.Vaadin.featureFlags || {};",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/frontend/TaskGenerateFeatureFlags.class"
+    },
+    {
+      "code": "window.Vaadin.setLitRenderer(this, $0, $1, $2, $3, $4)",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "window.Vaadin.unsetLitRenderer(this, $0, $1)",
+      "origin": "vaadin-renderer-flow-24.2.0.jar:com/vaadin/flow/data/renderer/LitRenderer.class"
+    },
+    {
+      "code": "window.dispatchEvent(new CustomEvent('vaadin-router-go', {detail: new URL($0, document.baseURI)}))",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "window.location.reload();",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/Page.class"
+    },
+    {
+      "code": "window[$0].clear()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/WebStorage.class"
+    },
+    {
+      "code": "window[$0].removeItem($1)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/WebStorage.class"
+    },
+    {
+      "code": "window[$0].setItem($1,$2)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/page/WebStorage.class"
+    }
+  ],
+  "events": [
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true) && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Enter'].indexOf(event.code) !== -1 || ['Enter'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ENTER"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta')",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.preventDefault() || true) && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "(['Escape','Esc'].indexOf(event.code) !== -1 || ['Escape','Esc'].indexOf(event.key) !== -1) && !event.getModifierState('Shift') && !event.getModifierState('Control') && !event.getModifierState('Alt') && !event.getModifierState('AltGraph') && !event.getModifierState('Meta') && (event.stopPropagation() || true)",
+      "origin": "Flow ShortcutRegistration: ESCAPE"
+    },
+    {
+      "code": "element.files",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "element.querySelector('[slot=\"primary\"]').style.flexBasis",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout$SplitterDragendEvent.class"
+    },
+    {
+      "code": "element.querySelector('[slot=\"secondary\"]').style.flexBasis",
+      "origin": "vaadin-split-layout-flow-24.2.0.jar:com/vaadin/flow/component/splitlayout/SplitLayout$SplitterDragendEvent.class"
+    },
+    {
+      "code": "event.altKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.button",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.clientX",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.clientY",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.code",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.ctrlKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.data",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/CompositionUpdateEvent.class"
+    },
+    {
+      "code": "event.dataTransfer.dropEffect",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DragEndEvent.class"
+    },
+    {
+      "code": "event.dataTransfer.effectAllowed",
+      "origin": "flow-dnd-24.2.0.jar:com/vaadin/flow/component/dnd/DropEvent.class"
+    },
+    {
+      "code": "event.detail",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.detail <= 1",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "event.detail == 2",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickNotifier.class"
+    },
+    {
+      "code": "event.detail.altKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.button",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.clientX",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.clientY",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.columns",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ColumnReorderEvent.class"
+    },
+    {
+      "code": "event.detail.ctrlKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.detail",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.dragData",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.dropLocation",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.dropTargetItem",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/dnd/GridDropEvent.class"
+    },
+    {
+      "code": "event.detail.error",
+      "origin": "vaadin-upload-flow-24.2.0.jar:com/vaadin/flow/component/upload/Upload.class"
+    },
+    {
+      "code": "event.detail.height",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog$DialogResizeEvent.class"
+    },
+    {
+      "code": "event.detail.internalColumnId",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.itemKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.metaKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.pageNumber",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/event/ThumbnailClickedEvent.class"
+    },
+    {
+      "code": "event.detail.password",
+      "origin": "vaadin-login-flow-24.2.0.jar:com/vaadin/flow/component/login/AbstractLogin$LoginEvent.class"
+    },
+    {
+      "code": "event.detail.resizedColumnKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ColumnResizeEvent.class"
+    },
+    {
+      "code": "event.detail.screenX",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.screenY",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.section",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/CellFocusEvent.class"
+    },
+    {
+      "code": "event.detail.shiftKey",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/ItemClickEvent.class"
+    },
+    {
+      "code": "event.detail.username",
+      "origin": "vaadin-login-flow-24.2.0.jar:com/vaadin/flow/component/login/AbstractLogin$LoginEvent.class"
+    },
+    {
+      "code": "event.detail.valid",
+      "origin": "vaadin-flow-components-base-24.2.0.jar:com/vaadin/flow/component/shared/HasClientValidation$ClientValidatedEvent.class"
+    },
+    {
+      "code": "event.detail.value",
+      "origin": "vaadin-accordion-flow-24.2.0.jar:com/vaadin/flow/component/accordion/Accordion$OpenedChangeEvent.class"
+    },
+    {
+      "code": "event.detail.width",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog$DialogResizeEvent.class"
+    },
+    {
+      "code": "event.isComposing",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.key",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.locale",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/CompositionUpdateEvent.class"
+    },
+    {
+      "code": "event.location",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.metaKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.model.index",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/internal/nodefeature/PolymerServerEventHandlers.class"
+    },
+    {
+      "code": "event.preventDefault()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "event.repeat",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.screenX",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.screenY",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/ClickEvent.class"
+    },
+    {
+      "code": "event.shiftKey",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    },
+    {
+      "code": "event.stopPropagation()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "event.target",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/dom/DomListenerRegistration.class"
+    },
+    {
+      "code": "this.$.overlay",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.$.overlay.$.overlay.style[$0]=$1",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.$connector.generateItems()",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "this.$connector.setFooterRenderer($0, { content: $1 })",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "this.$connector.setHeaderRenderer($0, { content: $1, showSorter: $2, sorterPath: $3 })",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/AbstractColumn.class"
+    },
+    {
+      "code": "this.$server['}p']($0, false)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/rpc/PublishedServerEventHandlerRpcHandler.class"
+    },
+    {
+      "code": "this.$server['}p']($0, true, $1)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/server/communication/rpc/PublishedServerEventHandlerRpcHandler.class"
+    },
+    {
+      "code": "this.__closeSidebar()",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this.__openSidebar()",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this._contentHeight = $0",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._contentWidth = $0",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._inputElementValue = $0",
+      "origin": "vaadin-combo-box-flow-24.2.0.jar:com/vaadin/flow/component/combobox/ComboBox.class"
+    },
+    {
+      "code": "this._inputElementValue = ''",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "this._inputElementValue = this.value",
+      "origin": "vaadin-text-field-flow-24.2.0.jar:com/vaadin/flow/component/textfield/BigDecimalField.class"
+    },
+    {
+      "code": "this._overlayElement",
+      "origin": "vaadin-confirm-dialog-flow-24.2.0.jar:com/vaadin/flow/component/confirmdialog/ConfirmDialog.class"
+    },
+    {
+      "code": "this._updateOrders(this._columnTree, null)",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/GridColumnOrderHelper.class"
+    },
+    {
+      "code": "this.disabled = $0",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/CheckboxGroup.class"
+    },
+    {
+      "code": "this.fire($0, $1, $2, $3)",
+      "origin": "ckeditor-vaadin-4.0.0.jar:com/wontlost/ckeditor/VaadinCKEditor.class"
+    },
+    {
+      "code": "this.generator = ({item, column}) => { return (item && item.gridtooltips && column) ? item.gridtooltips[column._flowId] ?? item.gridtooltips['row'] : ''; }",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "this.generator = ({item}) => { return (item && item.component) ? item.component.tooltip : ''; }",
+      "origin": "vaadin-menu-bar-flow-24.2.0.jar:com/vaadin/flow/component/menubar/MenuBar.class"
+    },
+    {
+      "code": "this.inputElement.removeAttribute($0)",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/Checkbox.class"
+    },
+    {
+      "code": "this.inputElement.setAttribute($0, $1)",
+      "origin": "vaadin-checkbox-flow-24.2.0.jar:com/vaadin/flow/component/checkbox/Checkbox.class"
+    },
+    {
+      "code": "this.inputElement.value = ''",
+      "origin": "vaadin-date-time-picker-flow-24.2.0.jar:com/vaadin/flow/component/datetimepicker/DateTimePickerDatePicker.class"
+    },
+    {
+      "code": "this.renderer = (root) => Vaadin.FlowComponentHost.setChildNodes($0, this.virtualChildNodeIds, root)",
+      "origin": "vaadin-dialog-flow-24.2.0.jar:com/vaadin/flow/component/dialog/Dialog.class"
+    },
+    {
+      "code": "this.renderer = (root) => {  if (this.text) {    root.textContent = this.text;  } else {    Vaadin.FlowComponentHost.setChildNodes($0, this.virtualChildNodeIds, root)  }}",
+      "origin": "vaadin-notification-flow-24.2.0.jar:com/vaadin/flow/component/notification/Notification.class"
+    },
+    {
+      "code": "this.scrollToIndex(...Array(10).fill(Infinity))",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/treegrid/TreeGrid.class"
+    },
+    {
+      "code": "this.scrollToIndex(this._effectiveSize)",
+      "origin": "vaadin-grid-flow-24.2.0.jar:com/vaadin/flow/component/grid/Grid.class"
+    },
+    {
+      "code": "this.serverConnected($0)",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "this.serverPaused()",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/UI.class"
+    },
+    {
+      "code": "this.setCurrentPage($0)",
+      "origin": "vcf-pdf-viewer-3.0.0.jar:com/vaadin/componentfactory/pdfviewer/PdfViewer.class"
+    },
+    {
+      "code": "this.src = this.src",
+      "origin": "flow-html-components-24.2.0.jar:com/vaadin/flow/component/html/IFrame.class"
+    },
+    {
+      "code": "this.updateData($0, $1)",
+      "origin": "ckeditor-vaadin-4.0.0.jar:com/wontlost/ckeditor/VaadinCKEditor.class"
+    },
+    {
+      "code": "typeof(event.key) === 'string' && event.key.length > 0",
+      "origin": "flow-server-24.2.0.jar:com/vaadin/flow/component/KeyUpEvent.class"
+    }
+  ],
+  "methods": [
+    "$connector.clear",
+    "$connector.clearExpanded",
+    "$connector.confirm",
+    "$connector.confirmParent",
+    "$connector.generateItems",
+    "$connector.reset",
+    "$connector.set",
+    "$connector.setLocale",
+    "$connector.setPlaceholderItem",
+    "$connector.setSelectionMode",
+    "$connector.setSorterDirections",
+    "$connector.updateData",
+    "$connector.updateFlatData",
+    "$connector.updateHierarchicalData",
+    "$connector.updateI18n",
+    "$connector.updateSize",
+    "$connector.updateUniqueItemIdPath",
+    "$contextMenuTargetConnector.openMenu",
+    "$contextMenuTargetConnector.removeConnector",
+    "addEvent",
+    "appendData",
+    "blur",
+    "clearChart",
+    "clearData",
+    "click",
+    "close",
+    "focus",
+    "initData",
+    "loadScript",
+    "recalculateColumnWidths",
+    "requestContentUpdate",
+    "resetData",
+    "scrollToIndex",
+    "setThemeAndLocale",
+    "updateChart",
+    "updateData",
+    "validate"
+  ]
+}

@@ -53,6 +53,7 @@ public class InstallmentNew implements Serializable {
 
 
 	@Column(length=2000)
+	@jakarta.persistence.Convert(converter = com.smis.security.richtext.RichTextHtmlConverter.class)
 	private String copyTo;
 	public String getCopyTo() {
 		return copyTo;
