@@ -22,12 +22,47 @@ class LoginSessionTest {
     private final HttpSessionSecurityContextRepository contexts = new HttpSessionSecurityContextRepository();
     private final MockHttpServletRequest request = new MockHttpServletRequest();
     private final MockHttpServletResponse response = new MockHttpServletResponse();
-    private final Login login = new Login(mock(AuthenticatedUser.class));
+    private final com.smis.security.captcha.Captcha captcha = mock(com.smis.security.captcha.Captcha.class);
+    private final Login login = createLogin();
+
+    private Login createLogin() {
+        when(captcha.getCaptchaImg()).thenAnswer(invocation -> new com.vaadin.flow.component.html.Image());
+        return new Login(mock(AuthenticatedUser.class), captcha);
+    }
 
     LoginSessionTest() {
+        clearInvocations(captcha);
+        when(login.captcha.getCaptchaImg()).thenAnswer(invocation -> new com.vaadin.flow.component.html.Image());
+        when(login.captcha.checkUserAnswer(anyString())).thenReturn(true);
         login.sr = registry;
         login.securityRepo = contexts;
         ReflectionTestUtils.setField(login, "authenticationManager", manager);
+    }
+
+    @Test
+    void invalidCaptchaNeverAuthenticatesOrChangesSessions() {
+        when(login.captcha.checkUserAnswer(anyString())).thenReturn(false);
+        String before = request.getSession().getId();
+        assertThrows(Login.InvalidCaptchaException.class,
+                () -> login.authenticateSession("user", "correct", "ABC123", request, response));
+        verifyNoInteractions(manager);
+        assertEquals(before, request.getSession().getId());
+        assertFalse(contexts.containsContext(request));
+        assertNull(SecurityContextHolder.getContext().getAuthentication());
+        assertEquals("", login.captchatext.getElement().getProperty("value"));
+    }
+
+    @Test
+    void captchaIsCheckedAndRefreshedBeforeCredentials() {
+        login.captchatext.getElement().setProperty("value", "ABC123");
+        when(manager.authenticate(any())).thenThrow(new BadCredentialsException("Bad credentials"));
+        assertThrows(BadCredentialsException.class,
+                () -> login.authenticateSession("user", "wrong", "ABC123", request, response));
+        var order = inOrder(login.captcha, manager);
+        order.verify(login.captcha).checkUserAnswer("ABC123");
+        order.verify(login.captcha).getCaptchaImg();
+        order.verify(manager).authenticate(any());
+        assertEquals("", login.captchatext.getElement().getProperty("value"));
     }
 
     @AfterEach
@@ -41,7 +76,7 @@ class LoginSessionTest {
         when(manager.authenticate(any())).thenThrow(new BadCredentialsException("Bad credentials"));
 
         assertThrows(BadCredentialsException.class,
-                () -> login.authenticateSession("victim", "wrong", request, response));
+                () -> login.authenticateSession("victim", "wrong", "ABC123", request, response));
 
         assertFalse(registry.getSessionInformation("victim-session").isExpired());
         assertEquals(before, request.getSession().getId());
@@ -61,7 +96,7 @@ class LoginSessionTest {
         request.getSession().setAttribute("vaadin-ui-state", uiState);
         String before = request.getSession().getId();
 
-        login.authenticateSession("submitted-alias", "correct", request, response);
+        login.authenticateSession("submitted-alias", "correct", "ABC123", request, response);
 
         String after = request.getSession().getId();
         assertNotEquals(before, after);
@@ -85,7 +120,7 @@ class LoginSessionTest {
         doThrow(new IllegalStateException("rotation failed")).when(failingRequest).changeSessionId();
 
         assertThrows(IllegalStateException.class,
-                () -> login.authenticateSession("user", "correct", failingRequest, response));
+                () -> login.authenticateSession("user", "correct", "ABC123", failingRequest, response));
 
         assertFalse(registry.getSessionInformation("existing").isExpired());
         assertNull(SecurityContextHolder.getContext().getAuthentication());

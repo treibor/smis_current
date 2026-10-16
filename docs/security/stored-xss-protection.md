@@ -103,7 +103,7 @@ Apply performs a fresh preflight, rejects blocked rows or an unexpected changed 
 * `src/test/java/com/smis/security/richtext/`: four regression test classes.
 * This report and `stored-xss-dry-run.txt`.
 
-Earlier Referrer-Policy/no-auth/AppScan changes already present in the working tree were preserved. No generated or minified file was manually edited.
+Earlier Referrer-Policy/AppScan changes already present in the working tree were preserved. No generated or minified file was manually edited.
 
 ## Verification results
 

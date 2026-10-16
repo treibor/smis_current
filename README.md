@@ -16,23 +16,8 @@ and replace its old expanded application directory along with the WAR.
 If the browser retains an older PWA bundle, clear site data for the deployment
 and reload.
 
-## Temporary local no-auth testing
+## Login
 
-For local UI testing only, start the application with the `no-auth-test` Spring profile:
-
-```text
-mvn spring-boot:run -Dspring-boot.run.profiles=no-auth-test
-```
-
-In Eclipse, create or edit a **Maven Build** run configuration, set the goal to
-`spring-boot:run`, and add this to the parameters/properties:
-
-```text
--Dspring-boot.run.profiles=no-auth-test
-```
-
-The profile selects the first enabled database user with the application's `SUPER`
-role and authenticates requests with that user's normal Spring Security principal.
-The configured database must therefore contain a suitable user. Startup fails if it
-does not, or if `no-auth-test` is combined with the `prod` or `production` Spring
-profile. Without `no-auth-test`, the existing login and security flow is unchanged.
+All application views require login. Enter the displayed CAPTCHA before signing in.
+CAPTCHA is checked on the server before credentials and refreshed after each attempt.
+The login username, password and CAPTCHA answer stay in browser-only fields and are encrypted with RSA-OAEP/SHA-256 before the login RPC is sent. HTTPS uses Web Crypto; HTTP staging uses bundled Forge with browser-generated cryptographic randomness. A per-view key and single-use OAEP challenge reject reuse across views or login attempts. There is no plaintext fallback. HTTP supports this payload encryption but does not protect the delivered page, public key, or session cookie against interception; use HTTPS for transport protection.

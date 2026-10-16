@@ -26,7 +26,6 @@
   - Strict session concurrency is enforced: `ConcurrentSessionControlAuthenticationStrategy` allows **only 1 session per user** (`maxSessionsPreventsLogin = true`).
   - Security headers are applied: Custom Content Security Policy (`SecurityHeadersPolicy.CSP`), `X-Frame-Options: DENY`, `HSTS` (1 year), and Permissions-Policy.
   - HTTP methods like `OPTIONS`, `DELETE`, `PATCH`, `PUT` are rejected by `disableOptionsMethodFilter`.
-  - Existing local test bypass: An existing profile `no-auth-test` uses `NoAuthTestAuthenticationFilter` to auto-log in as the first enabled `SUPER` user.
 
 ---
 
@@ -96,7 +95,7 @@ Dedicated portal for government officials, district officers, and system adminis
 ### 3.2 Exact Routes & Roles
 | Route | View Class | Layout | Allowed Roles | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| `/login` | `Login.java` | *None* | Anonymous | Form credentials, Captcha, Base64 transmission, audit log |
+| `/login` | `Login.java` | *None* | Anonymous | Form credentials, Captcha, browser RSA-OAEP password encryption, audit log |
 | `/` | `HomeView.java` | `MainLayout` | `@PermitAll` | Authenticated district dashboard & SO-Charts |
 | `mlaschemes` | `WorkView.java` | `MainLayout` | `USER`, `ADMIN`, `SUPER` | MLA scheme data entry, edit form, validation |
 | `mpschemes` | `WorkMpView.java` | `MainLayout` | `USER`, `ADMIN`, `SUPER` | MP scheme data entry & updates |
@@ -227,14 +226,6 @@ Run App A and App B on independent ports for isolated local testing or separate 
    ```powershell
    .\mvnw.cmd spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --app.mode=public"
    ```
-
----
-
-#### Strategy 3: Existing Dev Bypass Profile (`no-auth-test`)
-For local developer testing of admin screens without typing credentials:
-```powershell
-.\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=no-auth-test
-```
 
 ---
 

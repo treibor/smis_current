@@ -42,6 +42,17 @@ class ReferrerPolicyTest {
     @Autowired TestRestTemplate http;
 
     @Test
+    void directFormPostCannotAuthenticateWithoutCaptcha() throws Exception {
+        mvc.perform(post("/login")
+                .with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf())
+                .param("username", "tester").param("password", "unused"))
+                .andExpect(org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated());
+        mvc.perform(get("/api/header-probe"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
+    }
+
+    @Test
     void publicStaticGetAndHead() throws Exception {
         exact(mvc.perform(get("/images/plant.png")).andExpect(status().isOk()));
         exact(mvc.perform(head("/images/plant.png")).andExpect(status().isOk()));
@@ -75,7 +86,7 @@ class ReferrerPolicyTest {
         assertThat(failure.getHeaders().get("Content-Security-Policy")).containsExactly(SecurityHeadersPolicy.CSP);
         assertThat(failure.getHeaders().get("X-Frame-Options")).containsExactly("DENY");
         assertThat(failure.getHeaders().get("X-Content-Type-Options")).containsExactly("nosniff");
-        assertThat(failure.getHeaders().get("X-XSS-Protection")).containsExactly("0");
+        assertThat(failure.getHeaders().get("X-XSS-Protection")).containsExactly("1; mode=block");
         assertThat(failure.getHeaders()).doesNotContainKeys("Expect-CT", "Content-Security-Policy-Report-Only");
         var missing = java.net.http.HttpClient.newHttpClient().send(java.net.http.HttpRequest.newBuilder(
                 java.net.URI.create(http.getRootUri() + "/images/plant-16x16.png"))
@@ -91,7 +102,7 @@ class ReferrerPolicyTest {
                 .andExpect(header().string("Content-Security-Policy", SecurityHeadersPolicy.CSP))
                 .andExpect(header().string("X-Content-Type-Options", "nosniff"))
                 .andExpect(header().string("X-Frame-Options", "DENY"))
-                .andExpect(header().string("X-XSS-Protection", "0"))
+                .andExpect(header().string("X-XSS-Protection", "1; mode=block"))
                 .andExpect(header().string("Permissions-Policy", "geolocation=(self), microphone=()"))
                 .andExpect(header().doesNotExist("Content-Security-Policy-Report-Only"))
                 .andExpect(header().doesNotExist("Expect-CT"))

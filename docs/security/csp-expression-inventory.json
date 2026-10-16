@@ -1,6 +1,10 @@
 {
   "functions": [
     {
+      "code": "window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4)",
+      "origin": "application:Login.java"
+    },
+    {
       "code": "$0.addEventListener('items-changed', function(){ this.$server.updateSelectedTab(true); });",
       "origin": "vaadin-tabs-flow-24.2.0.jar:com/vaadin/flow/component/tabs/Tabs.class"
     },

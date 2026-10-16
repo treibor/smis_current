@@ -16,4 +16,15 @@ assert.throws(() => vm.runInContext(`eval('alert(1)')`, context), /Unmapped CSP/
 assert.throws(() => vm.runInContext(`(function(){}).constructor('return 7')()`, context), /Code generation from strings disallowed/);
 assert.throws(() => vm.runInContext(`new Function('$0', 'return $0.constructor()')`, context), /Unmapped CSP/);
 assert.equal(vm.runInContext('eval(7)', context), 7);
+// Execute the exact Element.executeJs wrapper used to install the login handler.
+assert.equal(vm.runInContext(`
+  window.smisInstallEncryptedLogin = (view, field, button, username, error, captcha) => {
+    view.installed = field + button + username + error + captcha;
+  };
+  var loginView = {};
+  new Function('$0', '$1', '$2', '$3', '$4', '$5',
+    'return (function() { window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4)}).apply($5)')
+    (1, 2, 3, 4, 5, loginView);
+  loginView.installed;
+`, context), 15);
 console.log('PASS: mapped calls, chunk loading, fail-closed unknown code under strict CSP');

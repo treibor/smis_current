@@ -1,8 +1,6 @@
 package com.smis.security;
 
-import java.util.Base64;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,9 +39,8 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
-import com.vaadin.flow.component.textfield.PasswordField;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.textfield.TextFieldVariant;
+import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.ClientCallable;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
@@ -54,6 +51,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 @Route("login")
 @AnonymousAllowed
+@com.vaadin.flow.component.dependency.JsModule("./login-password-crypto.js")
+@com.vaadin.flow.component.dependency.NpmPackage(value = "node-forge", version = "1.4.0")
 public class Login extends VerticalLayout implements BeforeEnterObserver {
 
 	@Autowired
@@ -67,23 +66,38 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 	private final AuthenticatedUser authenticatedUser;
 	HorizontalLayout captchacontainer = new HorizontalLayout();
 	Button refreshButton = new Button(new Icon(VaadinIcon.REFRESH));
-	Captcha captcha = new CapthaImpl();
+	Captcha captcha;
 	Image image;
-	public TextField captchatext = new TextField();
-	TextField usernameField = new TextField("User Name");
+	@Tag("vaadin-text-field")
+	@com.vaadin.flow.component.dependency.JsModule("@vaadin/text-field/src/vaadin-text-field.js")
+	static class BrowserTextField extends Component {}
+	BrowserTextField captchatext = new BrowserTextField();
+	BrowserTextField usernameField = new BrowserTextField();
 
-	PasswordField passwordField = new PasswordField("Password");
+	// No HasValue/AbstractField: plaintext must never be synchronized by Flow.
+	@Tag("vaadin-password-field")
+	@com.vaadin.flow.component.dependency.JsModule("@vaadin/password-field/src/vaadin-password-field.js")
+	static class BrowserPasswordField extends Component {}
+	BrowserPasswordField passwordField = new BrowserPasswordField();
+	private final LoginPasswordCipher passwordCipher = new LoginPasswordCipher();
 	Button button = new Button("Login");
+	Span loginError = new Span();
 	H3 title = new H3("Scheme MIS 2.0");
 	H2 description = new H2("Government of Meghalaya");
 	Anchor anchor = new Anchor();
 	private final SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder
 			.getContextHolderStrategy();
-	String dynamicKey = "";
 
+
+	@Autowired
 	public Login(AuthenticatedUser authenticatedUser) {
+		this(authenticatedUser, new CapthaImpl());
+	}
+
+	Login(AuthenticatedUser authenticatedUser, Captcha captcha) {
 		this.authenticatedUser = authenticatedUser;
-		this.dynamicKey = generateDynamicKey();
+		this.captcha = captcha;
+
 		setAlignItems(Alignment.CENTER);
 		setJustifyContentMode(JustifyContentMode.CENTER);
 		setSizeFull();
@@ -91,32 +105,23 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		getStyle().set("background-color", "hsla(0, 0%, 95%, 0.69)");
 	}
 
-	private String generateDynamicKey() {
-		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		StringBuilder key = new StringBuilder();
-		Random rnd = new Random();
-		while (key.length() < 5) { // length of the key
-			int index = (int) (rnd.nextFloat() * characters.length());
-			key.append(characters.charAt(index));
-		}
-		return key.toString();
-	}
-
 	private Component createPasswordForm() {
-		captchatext.addThemeVariants(TextFieldVariant.LUMO_ALIGN_CENTER);
-		// captchacontainer.add(getCaptcha(), refreshButton);
-		usernameField.setRequired(true);
-		usernameField.setAllowedCharPattern("[0-9A-Za-z@]");
-		usernameField.setMinLength(5);
-		usernameField.setMaxLength(40);
-		passwordField.setRequired(true);
-		passwordField.setMinLength(5);
-		passwordField.setMaxLength(40);
-		captchatext.setPlaceholder("CAPTCHA");
-		captchatext.setMaxLength(6);
-		captchatext.setMinLength(6);
-		captchatext.setMaxWidth("100px");
-		captchatext.setHeightFull();
+		usernameField.getElement().setProperty("label", "User Name");
+		usernameField.getElement().setProperty("required", true);
+		usernameField.getElement().setProperty("allowedCharPattern", "[0-9A-Za-z@]");
+		usernameField.getElement().setProperty("minlength", 5);
+		usernameField.getElement().setProperty("maxlength", 40);
+		passwordField.getElement().setProperty("label", "Password");
+		passwordField.getElement().setProperty("required", true);
+		passwordField.getElement().setProperty("minlength", 5);
+		passwordField.getElement().setProperty("maxlength", 40);
+		captchatext.getElement().setProperty("placeholder", "CAPTCHA");
+		captchatext.getElement().setProperty("required", true);
+		captchatext.getElement().setAttribute("aria-label", "Enter the six-character CAPTCHA");
+		captchatext.getElement().setProperty("maxlength", 6);
+		captchatext.getElement().setProperty("minlength", 6);
+		captchatext.getElement().setAttribute("theme", "align-center");
+		captchatext.getElement().getStyle().set("max-width", "100px").set("height", "100%");
 		button.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		button.setAutofocus(true);
 		anchor.setText("Forgot Password?");
@@ -124,11 +129,7 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		usernameField.getElement().setAttribute("autocomplete", "off");
 		passwordField.getElement().setAttribute("autocomplete", "off");
 
-		button.addClickListener(e -> {
-			String encryptedUsername = encryptClientSide(usernameField.getValue(), dynamicKey);
-			String encryptedPassword = encryptClientSide(passwordField.getValue(), dynamicKey);
-			doLogin(encryptedUsername, encryptedPassword);
-		});
+		addAttachListener(event -> installEncryptedLogin());
 
 		anchor.getStyle().set("color", "hsla(211, 100%, 50%, 0.90)").set("padding-bottom", "20px");
 		var form = new FormLayout();
@@ -137,11 +138,14 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		form.add(usernameField, 1);
 		form.add(passwordField, 1);
 
-		// form.add(getCaptcha(), 1);
+		form.add(getCaptcha(), 1);
 		form.add(new Span(), 1);
 		// form.add(captchatext, 1);
 		// form.add(, 1);
 		form.add(button, 1);
+		loginError.getElement().setAttribute("role", "alert");
+		loginError.getStyle().set("color", "var(--lumo-error-text-color)");
+		form.add(loginError, 1);
 		// form.add(anchor, 1);
 		form.setResponsiveSteps(new ResponsiveStep("0", 1), new ResponsiveStep("300px", 1));
 		form.setWidth("320px");
@@ -174,19 +178,24 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		return container;
 	}
 
-	private void doLogin(String encryptedUsername, String encryptedPassword) {
-		// Handle the authentication using Spring Security
-
-		// if (captcha.checkUserAnswer(captchatext.getValue())) {
-		String username = decryptUsername(encryptedUsername, dynamicKey);
-		String password = decryptPassword(encryptedPassword, dynamicKey);
+	@ClientCallable
+	public void submitEncryptedLogin(String encryptedUsername, String encryptedPassword, String encryptedCaptcha) {
+		String username = "";
 		try {
-			authenticateSession(username, password, VaadinServletRequest.getCurrent().getHttpServletRequest(),
+			var credentials = passwordCipher.decrypt(encryptedUsername, encryptedPassword, encryptedCaptcha);
+			username = credentials.username();
+			authenticateSession(username, credentials.password(), credentials.captcha(), VaadinServletRequest.getCurrent().getHttpServletRequest(),
 					VaadinServletResponse.getCurrent().getHttpServletResponse());
 			
 			audit.saveLoginAudit("Login Successfully", username);
 			UI.getCurrent().navigate(HomeView.class);
+		} catch (InvalidCaptchaException e) {
+			loginError.setText("Invalid CAPTCHA. Please try again.");
+			Notification.show("Invalid CAPTCHA. Please try again.")
+					.addThemeVariants(NotificationVariant.LUMO_ERROR);
+			clearFields();
 		} catch (Exception e) {
+			loginError.setText("Authentication failed. Check your user name and password and try again.");
 			// Handle login failure
 			audit.saveLoginAudit("Login Failure- Authentication", username);
 			Notification.show("Authentication failed: Wrong User Name and Password")
@@ -194,30 +203,23 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 			clearFields();
 
 		}
-//		}else {
-//			Notification.show("Invalid captcha").addThemeVariants(NotificationVariant.LUMO_ERROR);
-//			clearFields();
-//			//audit.saveLoginAudit("Login Failure- Captcha", username);
-//		}
 	}
 
-	private String encryptClientSide(String value, String key) {
-		// Implement client-side encryption logic here
-		return Base64.getEncoder().encodeToString(value.getBytes());
+	private void installEncryptedLogin() {
+		getElement().setProperty("loginPublicKey", passwordCipher.publicKey());
+		getElement().setProperty("loginChallenge", passwordCipher.challenge());
+		getElement().executeJs("window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4)",
+				passwordField.getElement(), button.getElement(), usernameField.getElement(), loginError.getElement(), captchatext.getElement());
 	}
 
-	private String decryptUsername(String encryptedUsername, String key) {
-		// Implement server-side decryption logic here
-		return new String(Base64.getDecoder().decode(encryptedUsername));
-	}
-
-	private String decryptPassword(String encryptedPassword, String key) {
-		// Implement server-side decryption logic here
-		return new String(Base64.getDecoder().decode(encryptedPassword));
-	}
-
-	void authenticateSession(String username, String password, HttpServletRequest request,
+	void authenticateSession(String username, String password, String captchaAnswer, HttpServletRequest request,
 			HttpServletResponse response) {
+		boolean validCaptcha = captcha.checkUserAnswer(captchaAnswer);
+		// Consume every challenge before checking credentials, including failed attempts.
+		regenerateCaptcha();
+		if (!validCaptcha) {
+			throw new InvalidCaptchaException();
+		}
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(username, password));
 		// Rotate the servlet ID while preserving Vaadin's session/UI attributes.
@@ -232,6 +234,10 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		context.setAuthentication(authentication);
 		securityRepo.saveContext(context, request, response);
 		securityContextHolderStrategy.setContext(context);
+	}
+
+	static class InvalidCaptchaException extends org.springframework.security.authentication.BadCredentialsException {
+		InvalidCaptchaException() { super("Invalid CAPTCHA"); }
 	}
 
 	public int getActiveSessionCountForUser(String username) {
@@ -302,24 +308,30 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 	private void clearFields() {
 		regenerateCaptcha();
 		button.setEnabled(true);
-		passwordField.setValue("");
-		usernameField.setValue("");
-		captchatext.setValue("");
+		passwordField.getElement().setProperty("value", "");
+		passwordCipher.renewChallenge();
+		getElement().setProperty("loginChallenge", passwordCipher.challenge());
+		usernameField.getElement().setProperty("value", "");
+		captchatext.getElement().setProperty("value", "");
 	}
 
 	public Component getCaptcha() {
+		if (image != null) {
+			regenerateCaptcha();
+			return captchacontainer;
+		}
 		image = captcha.getCaptchaImg();
 		captchacontainer.add(image, refreshButton, captchatext);
 		refreshButton.addClickListener(e -> regenerateCaptcha());
 		refreshButton.setTooltipText("Generate Another Captcha");
 		captchacontainer.setWidthFull();
 		captchacontainer.setJustifyContentMode(JustifyContentMode.CENTER);
-		captchacontainer.getStyle().set("padding", "20px");
+		captchacontainer.getStyle().set("flex-wrap", "wrap").set("gap", "var(--lumo-space-s)");
 		return captchacontainer;
 	}
 
 	private void regenerateCaptcha() {
-		// CAPTCHA is optional and may not have been added to the login form.
+		// Only refresh after the image has been initialized.
 		if (image == null) {
 			return;
 		}
@@ -328,6 +340,7 @@ public class Login extends VerticalLayout implements BeforeEnterObserver {
 		captchacontainer.remove(captchatext);
 		image = captcha.getCaptchaImg();
 		captchacontainer.add(image, refreshButton, captchatext);
+		captchatext.getElement().setProperty("value", "");
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +22,7 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -30,7 +30,6 @@ import org.springframework.web.cors.reactive.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
-import com.smis.security.noauth.NoAuthTestAuthenticationFilter;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -46,11 +45,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SecurityConfiguration extends VaadinWebSecurity {
 	@Autowired
 	private RateLimitingFilter rateLimitingFilter;
-	private final ObjectProvider<NoAuthTestAuthenticationFilter> noAuthTestFilter;
-
-	public SecurityConfiguration(ObjectProvider<NoAuthTestAuthenticationFilter> noAuthTestFilter) {
-		this.noAuthTestFilter = noAuthTestFilter;
-	}
 	
 	@Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -142,6 +136,7 @@ public class SecurityConfiguration extends VaadinWebSecurity {
         // Reject the same methods, after header writing is installed and before CSRF/authentication.
         .addFilterBefore(disableOptionsMethodFilter(), CsrfFilter.class)
 		.headers(headers -> headers
+                .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
                 .contentSecurityPolicy(csp -> csp.policyDirectives(SecurityHeadersPolicy.CSP))
                 .frameOptions(frame -> frame.deny())
                 .httpStrictTransportSecurity(hsts -> hsts.maxAgeInSeconds(31536000).includeSubDomains(false))
@@ -159,16 +154,15 @@ public class SecurityConfiguration extends VaadinWebSecurity {
                     // Container error dispatches retain their original 4xx/5xx status;
                     // direct client requests to /error still follow normal authorization.
                     .dispatcherTypeMatchers(jakarta.servlet.DispatcherType.ERROR).permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
                     .requestMatchers(new AntPathRequestMatcher("/security/purify.min.js", "GET"),
                             new AntPathRequestMatcher("/security/csp-registry.js", "GET"),
                             new AntPathRequestMatcher("/security/csp-compat.js", "GET")).permitAll()
                     .requestMatchers(new AntPathRequestMatcher("/images/*.png")).permitAll());
-		NoAuthTestAuthenticationFilter testFilter = noAuthTestFilter.getIfAvailable();
-		if (testFilter != null) {
-			http.addFilterBefore(testFilter, UsernamePasswordAuthenticationFilter.class);
-		}
 		super.configure(http);
 		setLoginView(http, Login.class);
+		// Login is handled by the Vaadin view after its server-side CAPTCHA check.
+		http.formLogin(form -> form.disable());
 		//setLoginView(http, LoginView.class);
 	}
 }

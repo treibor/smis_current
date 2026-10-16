@@ -11,30 +11,42 @@ import com.vaadin.flow.component.html.Image;
 
 class LoginTest {
     @Test
-    void clearFieldsWithoutCaptchaResetsCredentials() {
-        Login login = new Login(mock(AuthenticatedUser.class));
+    void captchaIsVisibleAndClearFieldsResetsCredentials() {
+        Captcha captcha = mock(Captcha.class);
+        when(captcha.getCaptchaImg()).thenReturn(new Image());
+        Login login = new Login(mock(AuthenticatedUser.class), captcha);
+        // Flow value fields register plaintext synchronization; these must remain browser-only.
+        assertFalse(com.vaadin.flow.component.HasValue.class.isInstance(login.usernameField));
+        assertFalse(com.vaadin.flow.component.HasValue.class.isInstance(login.passwordField));
+        assertFalse(com.vaadin.flow.component.HasValue.class.isInstance(login.captchatext));
         login.captcha = mock(Captcha.class);
-        login.usernameField.setValue("example");
-        login.passwordField.setValue("incorrect");
+        when(login.captcha.getCaptchaImg()).thenReturn(new Image());
+        login.usernameField.getElement().setProperty("value", "example");
+        login.passwordField.getElement().setProperty("value", "incorrect");
         login.button.setEnabled(false);
 
         assertDoesNotThrow(() -> ReflectionTestUtils.invokeMethod(login, "clearFields"));
 
-        assertTrue(login.usernameField.isEmpty());
-        assertTrue(login.passwordField.isEmpty());
+        assertEquals("", login.usernameField.getElement().getProperty("value"));
+        assertEquals("", login.passwordField.getElement().getProperty("value"));
         assertTrue(login.button.isEnabled());
-        verifyNoInteractions(login.captcha);
+        verify(login.captcha).getCaptchaImg();
+        assertTrue(login.captchacontainer.getParent().isPresent());
+        assertTrue(login.captchatext.getElement().getProperty("required", false));
     }
 
     @Test
     void clearFieldsRefreshesInitializedCaptcha() {
-        Login login = new Login(mock(AuthenticatedUser.class));
+        Captcha captcha = mock(Captcha.class);
+        when(captcha.getCaptchaImg()).thenReturn(new Image());
+        Login login = new Login(mock(AuthenticatedUser.class), captcha);
         login.captcha = mock(Captcha.class);
+        when(login.captcha.getCaptchaImg()).thenReturn(new Image());
         Image original = new Image();
         Image replacement = new Image();
         when(login.captcha.getCaptchaImg()).thenReturn(original, replacement);
         login.getCaptcha();
-        login.captchatext.setValue("123456");
+        login.captchatext.getElement().setProperty("value", "123456");
 
         ReflectionTestUtils.invokeMethod(login, "clearFields");
 
@@ -42,6 +54,6 @@ class LoginTest {
         assertTrue(original.getParent().isEmpty());
         assertEquals(3, login.captchacontainer.getComponentCount());
         assertSame(replacement, login.captchacontainer.getComponentAt(0));
-        assertTrue(login.captchatext.isEmpty());
+        assertEquals("", login.captchatext.getElement().getProperty("value"));
     }
 }

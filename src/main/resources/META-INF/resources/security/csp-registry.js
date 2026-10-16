@@ -1,5 +1,9 @@
 /* Generated from resolved dependency constants. Run scripts/CollectCspConstants.java then scripts/build-csp-registry.cjs. */
 window.__smisCspRegistry = new Map([
+// application:Login.java
+["window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4)", function($0,$1,$2,$3,$4) {
+window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4);
+}],
 // vaadin-tabs-flow-24.2.0.jar:com/vaadin/flow/component/tabs/Tabs.class
 ["$0.addEventListener('items-changed', function(){ this.$server.updateSelectedTab(true); });", function($0,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) {
 $0.addEventListener('items-changed', function(){ this.$server.updateSelectedTab(true); });

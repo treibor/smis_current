@@ -5,6 +5,8 @@ const sources = JSON.parse(fs.readFileSync('target/csp-source-inventory.json', '
 const params = Array.from({length:16}, (_, i) => '$'+i);
 const accepted = [];
 const events = [];
+// Application setup calls must be compiled here too; runtime string compilation stays blocked.
+accepted.push({code: 'window.smisInstallEncryptedLogin(this,$0,$1,$2,$3,$4)', origin: 'application:Login.java'});
 for (const {code, origin} of entries) {
   if (code.length > 20000 || /[\x00-\x08]/.test(code)) continue;
   if (!/(\$\d|\bthis\.|\bwindow\.|\bdocument\.|\bevent\.|\bVaadin\.)/.test(code)) continue;

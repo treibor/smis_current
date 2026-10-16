@@ -73,6 +73,7 @@
     "echarts": "5.4.2",
     "lit": "^2.6.1",
     "mobile-drag-drop": "2.3.0-rc.2",
+    "node-forge": "1.4.0",
     "print-js": "1.6.0"
   },
   "devDependencies": {
@@ -164,6 +165,7 @@
       "echarts": "5.4.2",
       "lit": "^2.6.1",
       "mobile-drag-drop": "2.3.0-rc.2",
+      "node-forge": "1.4.0",
       "print-js": "1.6.0"
     },
     "devDependencies": {
@@ -183,7 +185,7 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "b1e5ec12e99719ca7c2d4d3261c3d2655928ff97cf56704f9e0539302315a6d5"
+    "hash": "5a24b40087fcf1dec5feddc8b394c327a7e83fb2ceb8eb22bc5b5f0cf50c1079"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -256,6 +258,7 @@
     "@vaadin/vaadin-themable-mixin": "$@vaadin/vaadin-themable-mixin",
     "date-fns": "$date-fns",
     "echarts": "$echarts",
-    "mobile-drag-drop": "$mobile-drag-drop"
+    "mobile-drag-drop": "$mobile-drag-drop",
+    "node-forge": "$node-forge"
   }
 }
